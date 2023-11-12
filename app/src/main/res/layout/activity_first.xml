@@ -6,4 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".FirstActivity">
 
+    <ImageView
+        android:id="@+id/iv_first_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:src="@drawable/kisyuksa_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_first_signup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/ic_blue_btn"
+        android:fontFamily="@font/pretendardsemibold"
+        android:text="로그인"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintDimensionRatio="7:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_first_logo" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_first_signin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_wblue_btn"
+        android:fontFamily="@font/pretendardsemibold"
+        android:text="회원가입"
+        android:textColor="@color/gray"
+        android:textSize="18dp"
+        app:layout_constraintDimensionRatio="7:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_first_signup" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
