@@ -58,16 +58,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center">
+
                 <android.widget.Button
                     android:id="@+id/sleepover_apply_button"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="5"
-                    android:text="외박"
-                    android:paddingTop="50dp"
+                    android:background="@drawable/ic_border_wblue_button"
                     android:drawableTop="@drawable/ic_sleepover"
-                    android:background="@drawable/ic_border_wblue_button" />
+                    android:paddingTop="50dp"
+                    android:text="외박" />
 
                 <android.widget.Button
                     android:id="@+id/diet_button"
