@@ -8,4 +8,5 @@
     <color name="light_blue">#2F6BAF</color>
     <color name="background_skyblue">#33B6D3FF</color>
     <color name="border_skyblue">#885B8FCB</color>
+    <color name="edit_text_gray">#EDEDED</color>
 </resources>
