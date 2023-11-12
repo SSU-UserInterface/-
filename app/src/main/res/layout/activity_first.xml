@@ -17,12 +17,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_first_signup"
+        android:id="@+id/btn_signin_first"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="300dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/ic_blue_btn"
         android:fontFamily="@font/pretendardsemibold"
         android:text="로그인"
@@ -35,12 +35,12 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_first_logo" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_first_signin"
+        android:id="@+id/btn_signup_first"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/ic_wblue_btn"
         android:fontFamily="@font/pretendardsemibold"
         android:text="회원가입"
@@ -50,9 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_first_signup" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/btn_signin_first" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
