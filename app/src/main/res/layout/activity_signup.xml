@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_signup_l1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_signup_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/pretendardbold"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textColor="@color/black"
+            android:textSize="23dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_signup_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/pretendardregular"
+        android:text="숭실대학교 메일을 입력해주세요."
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signup_l1" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textinput_signup_email"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="21dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signup_email"
+        app:passwordToggleEnabled="false">
+
+        <FrameLayout
+            android:id="@+id/fl_signup_email_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signup_email"
+            tools:layout_editor_absoluteX="21dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_signup_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/wgray"
+                android:fontFamily="@font/pretendardregular"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/black"
+                android:textCursorDrawable="@null"
+                android:textSize="16dp"
+                android:hint="kisyuksa@soongsil.ac.kr"
+                tools:ignore="DuplicateIds" />
+
+        </FrameLayout>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_signup_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/pretendardregular"
+        android:text="비밀번호를 입력해주세요."
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textinput_signup_email" />
+
+    <FrameLayout
+        android:id="@+id/fl_signup_l1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signup_pw">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textinput_signup_pw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_signup_pw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/wgray"
+                android:inputType="textPassword"
+                android:hint="대소문자, 숫자 포함 6자리 이상"
+                android:fontFamily="@font/pretendardregular"
+                android:textColorHint="@color/black"
+                android:textCursorDrawable="@null"
+                android:textSize="16dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_signup_pw_auth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/pretendardregular"
+        android:text="비밀번호를 다시 한 번 입력해주세요."
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fl_signup_l1" />
+
+    <FrameLayout
+        android:id="@+id/fl_signup_repw"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="21dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signup_pw_auth">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textinput_signup_repw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_signup_repw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/wgray"
+                android:inputType="textPassword"
+                android:fontFamily="@font/pretendardregular"
+                android:textSize="16dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_signup_next"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="59dp"
+        android:background="@drawable/ic_wblue_btn"
+        android:fontFamily="@font/pretendardsemibold"
+        android:text="다음으로"
+        android:textColor="@color/gray"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="7:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
