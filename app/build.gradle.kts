@@ -4,7 +4,11 @@ plugins {
 
 android {
     namespace = "com.ssu.kisyuksa"
-    compileSdk = 33
+    compileSdk = 34
+
+    viewBinding{
+        enable = true
+    }
 
     defaultConfig {
         applicationId = "com.ssu.kisyuksa"
@@ -35,6 +39,9 @@ android {
 }
 
 dependencies {
+
+    //material design
+    implementation ("com.google.android.material:material:1.1.0")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
