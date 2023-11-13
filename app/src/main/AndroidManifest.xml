@@ -25,6 +25,21 @@
             android:name=".FirstActivity"
             android:exported="false" />
         <activity
+            android:name=".Notice"
+            android:exported="false" />
+        <activity
+            android:name=".DormitoryMenu"
+            android:exported="false" />
+        <activity
+            android:name=".SleepOutListDetail"
+            android:exported="false" />
+        <activity
+            android:name=".SleepOutList"
+            android:exported="false" />
+        <activity
+            android:name=".SleepOutApplication"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
