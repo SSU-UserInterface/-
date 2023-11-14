@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DormitoryMenu extends AppCompatActivity {
+public class SleepOutListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dormitory_menu);
+        setContentView(R.layout.activity_sleep_out_list);
     }
 }
