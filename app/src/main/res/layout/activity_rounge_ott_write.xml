@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:src="@drawable/baseline_arrow_back_ios_new_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="OTT 공유 글 작성"
+            android:fontFamily="@font/pretendardsemibold"
+            android:layout_weight="1"
+            android:textSize="24dp"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="669dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-14dp"
+        tools:layout_editor_absoluteY="46dp">
+
+        <TextView
+            android:id="@+id/tv_signup_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/pretendardregular"
+            android:text="공동 구독을 희망하는 내용을 적어주세요"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textinput_signup_email"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="21dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signup_email"
+            app:passwordToggleEnabled="false">
+
+            <FrameLayout
+                android:id="@+id/fl_signup_email_input"
+                android:layout_width="match_parent"
+                android:layout_height="375dp"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/tv_signup_email"
+                tools:layout_editor_absoluteX="21dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_signup_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/wgray"
+                    android:fontFamily="@font/pretendardregular"
+                    android:hint="넷플릭스 3명 구합니다!!"
+                    android:gravity="center_horizontal"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/black"
+                    android:textCursorDrawable="@null"
+                    android:textSize="16dp"
+                    tools:ignore="DuplicateIds" />
+
+            </FrameLayout>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_signup_next"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="112dp"
+            android:background="@drawable/ic_wblue_btn"
+            android:fontFamily="@font/pretendardsemibold"
+            android:text="작성 완료"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="7:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
