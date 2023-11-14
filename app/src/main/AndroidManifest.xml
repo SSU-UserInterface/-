@@ -25,19 +25,19 @@
             android:name=".FirstActivity"
             android:exported="false" />
         <activity
-            android:name=".Notice"
+            android:name=".NoticeActivity"
             android:exported="false" />
         <activity
-            android:name=".DormitoryMenu"
+            android:name=".DormitoryMenuActivity"
             android:exported="false" />
         <activity
-            android:name=".SleepOutListDetail"
+            android:name=".SleepOutListDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".SleepOutList"
+            android:name=".SleepOutListActivity"
             android:exported="false" />
         <activity
-            android:name=".SleepOutApplication"
+            android:name=".SleepOutApplicationActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
