@@ -52,7 +52,7 @@
             android:name=".MyInfoInputActivity"
             android:exported="false" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".FirstActivity"
