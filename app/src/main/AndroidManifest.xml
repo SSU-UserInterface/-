@@ -24,9 +24,6 @@
         <activity
             android:name=".RoungeOttActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".MainActivity2"-->
-<!--            android:exported="false" />-->
         <activity
             android:name=".RoungeHealthActivity"
             android:exported="false" />
@@ -49,7 +46,7 @@
             android:name=".MyInfoInputActivity"
             android:exported="false" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".FirstActivity"
