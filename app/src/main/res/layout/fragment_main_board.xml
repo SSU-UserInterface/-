@@ -52,6 +52,7 @@
             android:fontFamily="@font/pretendardextrabold"
             android:textSize="20dp"
             android:gravity="center"
+            android:textColor="@color/gray"
             android:text="분실물"/>
         <TextView
             android:id="@+id/room_mate_board"
@@ -61,6 +62,7 @@
             android:fontFamily="@font/pretendardextrabold"
             android:textSize="20dp"
             android:gravity="center"
+            android:textColor="@color/gray"
             android:text="룸메이트"/>
     </LinearLayout>
     <View
