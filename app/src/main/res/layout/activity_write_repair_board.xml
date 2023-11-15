@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SleepOutApplicationActivity"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:src="@drawable/baseline_arrow_back_ios_new_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="(수리,분실물,룸메이트 유동적 변경)"
+            android:fontFamily="@font/pretendardextrabold"
+            android:layout_weight="1"
+            android:textSize="24dp"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="(수리/분실물/룸메 유동적 변경)"
+            android:fontFamily="@font/pretendardsemibold"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_margin="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="5dp"
+            android:background="@color/edit_text_gray"
+            android:hint="(수리/분실물/룸메 내용)"
+            android:fontFamily="@font/pretendardextrabold"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:layout_marginBottom="10dp">
+            <android.widget.Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_blue_btn"
+                android:fontFamily="@font/pretendardsemibold"
+                android:textSize="20dp"
+                android:text="작성 완료"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
