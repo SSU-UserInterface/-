@@ -6,4 +6,139 @@
     android:layout_height="match_parent"
     tools:context=".SignInActivity">
 
+    <ImageView
+        android:id="@+id/iv_signin_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:src="@drawable/kisyuksa_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_signin_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/pretendardregular"
+        android:text="이메일"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_signin_logo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textinput_signin_email"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signin_email"
+        app:passwordToggleEnabled="false">
+
+        <FrameLayout
+            android:id="@+id/fl_signin_email_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signin_email"
+            tools:layout_editor_absoluteX="21dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_signin_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/wgray"
+                android:fontFamily="@font/pretendardregular"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/black"
+                android:textCursorDrawable="@null"
+                android:textSize="16dp"
+                android:hint="kisyuksa@soongsil.ac.kr"
+                tools:ignore="DuplicateIds" />
+        </FrameLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_signin_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/pretendardregular"
+        android:text="비밀번호"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textinput_signin_email" />
+
+    <FrameLayout
+        android:id="@+id/fl_signin_l1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signin_pw">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textinput_signin_pw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_signin_pw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/wgray"
+                android:inputType="textPassword"
+                android:fontFamily="@font/pretendardregular"
+                android:textColorHint="@color/black"
+                android:textCursorDrawable="@null"
+                android:textSize="16dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </FrameLayout>
+
+    <CheckBox
+        android:id="@+id/cb_signin_auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        android:fontFamily="@font/pretendardregular"
+        android:text="자동 로그인"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fl_signin_l1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_signin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="150dp"
+        android:background="@drawable/ic_blue_btn"
+        android:fontFamily="@font/pretendardsemibold"
+        android:text="로그인"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="7:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
