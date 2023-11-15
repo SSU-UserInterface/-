@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class roungeChatActivity extends AppCompatActivity {
+public class RoungeMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rounge_chat);
+        setContentView(R.layout.activity_rounge_main);
     }
 }

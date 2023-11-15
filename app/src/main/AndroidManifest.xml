@@ -13,34 +13,34 @@
         android:theme="@style/Theme.Kisyuksa"
         tools:targetApi="31">
         <activity
-            android:name=".roungeChatRoomActivity"
+            android:name=".RoungeChatRoomActivity"
             android:exported="false" />
         <activity
-            android:name=".roungeChatActivity"
+            android:name=".RoungeChatActivity"
             android:exported="false" />
         <activity
-            android:name=".roungeOttWriteActivity"
+            android:name=".RoungeOttWriteActivity"
             android:exported="false" />
         <activity
-            android:name=".roungeOttActivity"
+            android:name=".RoungeOttActivity"
             android:exported="false" />
 <!--        <activity-->
 <!--            android:name=".MainActivity2"-->
 <!--            android:exported="false" />-->
         <activity
-            android:name=".roungeHealthActivity"
+            android:name=".RoungeHealthActivity"
             android:exported="false" />
         <activity
-            android:name=".roungeDeliveryWriteActivity"
+            android:name=".RoungeDeliveryWriteActivity"
             android:exported="false" />
         <activity
-            android:name=".roungeDelivery2Activity"
+            android:name=".RoungeDelivery2Activity"
             android:exported="false" />
         <activity
-            android:name=".roungeDeliveryActivity"
+            android:name=".RoungeDeliveryActivity"
             android:exported="false" />
         <activity
-            android:name=".roungeMain"
+            android:name=".RoungeMainActivity"
             android:exported="false" />
         <activity
             android:name=".BnvActivity"

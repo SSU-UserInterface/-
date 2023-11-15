@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class roungeDeliveryWriteActivity extends AppCompatActivity {
+public class RoungeOttWriteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rounge_delivery_write);
+        setContentView(R.layout.activity_rounge_ott_write);
     }
 }
