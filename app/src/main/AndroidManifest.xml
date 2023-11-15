@@ -13,31 +13,31 @@
         android:theme="@style/Theme.Kisyuksa"
         tools:targetApi="31">
         <activity
-            android:name=".activity_rounge_chatroom"
+            android:name=".roungeChatRoomActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_rounge_chat"
+            android:name=".roungeChatActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_rounge_ott_write"
+            android:name=".roungeOttWriteActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_rounge_ott"
+            android:name=".roungeOttActivity"
+            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".MainActivity2"-->
+<!--            android:exported="false" />-->
+        <activity
+            android:name=".roungeHealthActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".roungeDeliveryWriteActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_health"
+            android:name=".roungeDelivery2Activity"
             android:exported="false" />
         <activity
-            android:name=".activity_rounge_delivery_write"
-            android:exported="false" />
-        <activity
-            android:name=".activity_rounge_delivey2"
-            android:exported="false" />
-        <activity
-            android:name=".activity_rounge_delivery"
+            android:name=".roungeDeliveryActivity"
             android:exported="false" />
         <activity
             android:name=".roungeMain"
@@ -49,7 +49,7 @@
             android:name=".MyInfoInputActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".SignupActivity"
             android:exported="false" />
         <activity
             android:name=".FirstActivity"
