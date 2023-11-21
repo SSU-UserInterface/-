@@ -55,10 +55,10 @@
             android:name=".MyInfoInputActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".FirstActivity"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".NoticeActivity"
@@ -76,7 +76,7 @@
             android:name=".SleepOutApplicationActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".FirstActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
