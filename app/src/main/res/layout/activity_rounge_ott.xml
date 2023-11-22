@@ -7,27 +7,32 @@
     tools:context=".SleepOutListActivity"
     android:orientation="vertical"
     android:padding="20dp">
+
     <FrameLayout
+        android:id="@+id/frameLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        tools:ignore="MissingConstraints">
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="left"
-            android:src="@drawable/baseline_arrow_back_ios_new_24"/>
+            android:src="@drawable/baseline_arrow_back_ios_new_24" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="OTT 공유"
-            android:fontFamily="@font/pretendardsemibold"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:textSize="24dp"
+            android:fontFamily="@font/pretendardsemibold"
             android:gravity="center"
-            android:layout_gravity="center"/>
+            android:text="OTT 공유"
+            android:textSize="24dp" />
     </FrameLayout>
 
 
@@ -35,30 +40,47 @@
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="4dp"
+        android:layout_marginTop="17dp"
         android:background="@drawable/ic_border_wblue_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout3"
         app:srcCompat="@drawable/line"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="67dp" />
+        tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="627dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toTopOf="@+id/line1"
+        android:layout_width="354dp"
+        android:layout_height="591dp"
+        android:layout_marginTop="15dp"
         android:background="@color/background_skyblue"
-        tools:layout_editor_absoluteX="-18dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/line1">
 
+
+        <ImageButton
+            android:id="@+id/ott_write_button"
+            android:layout_width="74dp"
+            android:layout_height="38dp"
+            android:layout_gravity="left"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="28dp"
+            android:src="@drawable/chat_plus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
 
         <GridLayout
             android:layout_width="298dp"
             android:layout_height="535dp"
+            android:layout_marginTop="40dp"
             android:columnCount="2"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="38dp"
-            tools:layout_editor_absoluteY="35dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
 
             <android.widget.Button
                 android:layout_width="116dp"
@@ -73,32 +95,7 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="70dp"
                 tools:layout_editor_absoluteY="65dp" />
-            <android.widget.Button
-                android:layout_width="116dp"
-                android:layout_height="105dp"
-                android:layout_margin="15dp"
-                android:layout_weight="5"
-                android:background="@drawable/ic_border_wblue_button"
-                android:text="넷플릭스 \n 3명 구해요!"
-                android:textSize="20dp"
-                android:textStyle="bold"
 
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="70dp"
-                tools:layout_editor_absoluteY="65dp" />
-            <android.widget.Button
-                android:layout_width="116dp"
-                android:layout_height="105dp"
-                android:layout_margin="15dp"
-                android:layout_weight="5"
-                android:background="@drawable/ic_border_wblue_button"
-                android:text="넷플릭스 \n 3명 구해요!"
-                android:textSize="20dp"
-                android:textStyle="bold"
-
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="70dp"
-                tools:layout_editor_absoluteY="65dp" />
             <android.widget.Button
                 android:layout_width="116dp"
                 android:layout_height="105dp"
@@ -113,7 +110,33 @@
                 tools:layout_editor_absoluteX="70dp"
                 tools:layout_editor_absoluteY="65dp" />
 
+            <android.widget.Button
+                android:layout_width="116dp"
+                android:layout_height="105dp"
+                android:layout_margin="15dp"
+                android:layout_weight="5"
+                android:background="@drawable/ic_border_wblue_button"
+                android:text="넷플릭스 \n 3명 구해요!"
+                android:textSize="20dp"
+                android:textStyle="bold"
 
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="70dp"
+                tools:layout_editor_absoluteY="65dp" />
+
+            <android.widget.Button
+                android:layout_width="116dp"
+                android:layout_height="105dp"
+                android:layout_margin="15dp"
+                android:layout_weight="5"
+                android:background="@drawable/ic_border_wblue_button"
+                android:text="넷플릭스 \n 3명 구해요!"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="70dp"
+                tools:layout_editor_absoluteY="65dp" />
 
 
         </GridLayout>

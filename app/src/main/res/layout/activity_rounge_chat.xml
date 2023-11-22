@@ -7,27 +7,32 @@
     tools:context=".SleepOutListActivity"
     android:orientation="vertical"
     android:padding="20dp">
+
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        tools:ignore="MissingConstraints">
+        android:layout_marginTop="1dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="left"
-            android:src="@drawable/baseline_arrow_back_ios_new_24"/>
+            android:src="@drawable/baseline_arrow_back_ios_new_24" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="채팅방"
-            android:fontFamily="@font/pretendardsemibold"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:textSize="24dp"
+            android:fontFamily="@font/pretendardsemibold"
             android:gravity="center"
-            android:layout_gravity="center"/>
+            android:text="채팅방"
+            android:textSize="24dp" />
     </FrameLayout>
 
 
@@ -35,32 +40,38 @@
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="4dp"
+        android:layout_marginTop="17dp"
         android:background="@drawable/ic_border_wblue_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
         app:srcCompat="@drawable/line"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="67dp" />
+        tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="627dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toTopOf="@+id/line1"
+        android:layout_marginTop="6dp"
+        android:clickable="false"
         android:background="@color/background_skyblue"
+        app:layout_constraintTop_toBottomOf="@+id/line1"
         tools:layout_editor_absoluteX="-18dp">
 
 
         <GridLayout
             android:layout_width="266dp"
             android:layout_height="534dp"
+            android:layout_marginTop="40dp"
             android:columnCount="2"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="51dp"
-            tools:layout_editor_absoluteY="35dp">
+            android:clickable="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
 
             <android.widget.Button
+                android:id="@+id/chat_button1"
                 android:layout_width="110dp"
                 android:layout_height="63dp"
                 android:layout_margin="10dp"
@@ -72,61 +83,71 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="70dp"
                 tools:layout_editor_absoluteY="65dp" />
+
             <android.widget.Button
+                android:id="@+id/chat_button2"
                 android:layout_width="110dp"
                 android:layout_height="63dp"
                 android:layout_margin="10dp"
                 android:layout_weight="5"
                 android:background="@drawable/ic_border_wblue_button"
-                android:text="채널 1"
+                android:text="채널 2"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="70dp"
                 tools:layout_editor_absoluteY="65dp" />
+
             <android.widget.Button
+                android:id="@+id/chat_button3"
                 android:layout_width="110dp"
                 android:layout_height="63dp"
                 android:layout_margin="10dp"
                 android:layout_weight="5"
                 android:background="@drawable/ic_border_wblue_button"
-                android:text="채널 1"
+                android:text="채널 3"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="70dp"
                 tools:layout_editor_absoluteY="65dp" />
+
             <android.widget.Button
+                android:id="@+id/chat_button4"
                 android:layout_width="110dp"
                 android:layout_height="63dp"
                 android:layout_margin="10dp"
                 android:layout_weight="5"
                 android:background="@drawable/ic_border_wblue_button"
-                android:text="채널 1"
+                android:text="채널 4"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="70dp"
                 tools:layout_editor_absoluteY="65dp" />
+
             <android.widget.Button
+                android:id="@+id/chat_button5"
                 android:layout_width="110dp"
                 android:layout_height="63dp"
                 android:layout_margin="10dp"
                 android:layout_weight="5"
                 android:background="@drawable/ic_border_wblue_button"
-                android:text="채널 1"
+                android:text="채널 5"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="70dp"
                 tools:layout_editor_absoluteY="65dp" />
+
             <android.widget.Button
+                android:id="@+id/chat_button6"
                 android:layout_width="110dp"
                 android:layout_height="63dp"
                 android:layout_margin="10dp"
                 android:layout_weight="5"
                 android:background="@drawable/ic_border_wblue_button"
-                android:text="채널 1"
+                android:text="채널 6"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 tools:ignore="MissingConstraints"
@@ -136,15 +157,17 @@
 
         </GridLayout>
 
-        <ImageView
-            android:id="@+id/ott_button"
+        <ImageButton
+            android:id="@+id/chat_write_button"
             android:layout_width="74dp"
             android:layout_height="38dp"
             android:layout_gravity="left"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="52dp"
             android:src="@drawable/chat_plus"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="292dp"
-            tools:layout_editor_absoluteY="530dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
