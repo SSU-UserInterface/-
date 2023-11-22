@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RoungeMainActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_signup_l1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_signup_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/pretendardbold"
+            android:gravity="center"
+            android:text="라운지"
+            android:textColor="@color/black"
+            android:textSize="23dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="414dp"
+        android:layout_height="552dp"
+        android:src="@drawable/roungeimage1"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signup_l1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="415dp"
+        android:layout_height="552dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signup_l1"
+        app:srcCompat="@drawable/roungeimage2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="422dp"
+        android:layout_height="550dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signup_l1"
+        app:layout_constraintVertical_bias="0.513"
+        app:srcCompat="@drawable/roungeimage3"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="426dp"
+        android:layout_height="552dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signup_l1"
+        app:layout_constraintVertical_bias="0.459"
+        app:srcCompat="@drawable/roungeimage4"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-6dp" />
+
+
+    <ImageButton
+        android:id="@+id/chat_button"
+        android:layout_width="74dp"
+        android:layout_height="38dp"
+        android:layout_gravity="left"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/rounge_chat_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signup_l1"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/delivery_button"
+        android:layout_width="74dp"
+        android:layout_height="38dp"
+        android:layout_gravity="left"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="229dp"
+        android:src="@drawable/rounge_delivery_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signup_l1"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/health_button"
+        android:layout_width="74dp"
+        android:layout_height="38dp"
+        android:layout_gravity="left"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/rounge_health_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signup_l1"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/ott_button"
+        android:layout_width="74dp"
+        android:layout_height="38dp"
+        android:layout_gravity="left"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="328dp"
+        android:src="@drawable/rounge_ott_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signup_l1"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bnv_main"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:background="@drawable/shape_black_line_rect"-->
+<!--        app:itemHorizontalTranslationEnabled="false"-->
+<!--        app:itemIconTint="@drawable/bnv_selector_color"-->
+<!--        app:itemIconSize="37dp"-->
+<!--        app:labelVisibilityMode="unlabeled"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:menu="@menu/menu_bnv"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

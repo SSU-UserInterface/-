@@ -18,7 +18,10 @@ public class BnvActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.bnvMain.setOnNavigationItemSelectedListener(menuItem -> {
-            if (menuItem.getItemId() == R.id.bnv_check) {
+            if (menuItem.getItemId() == R.id.bnv_home) {
+                replaceFragment(new RoungeMainFragment());
+                return true;
+            } else if (menuItem.getItemId() == R.id.bnv_check) {
                 replaceFragment(new NoticeAndSleepOutFragment());
                 return true;
             } else if (menuItem.getItemId() == R.id.bnv_board) {
