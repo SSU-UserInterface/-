@@ -1,5 +1,6 @@
 package com.ssu.kisyuksa;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.ssu.kisyuksa.databinding.FragmentMainBoardBinding;
+import com.ssu.kisyuksa.databinding.FragmentNoticeAndSleepoverBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +27,8 @@ public class MainBoardFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    FragmentMainBoardBinding binding;
 
     public MainBoardFragment() {
         // Required empty public constructor
@@ -58,7 +64,49 @@ public class MainBoardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_board, container, false);
+        binding = FragmentMainBoardBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        binding.repairBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.repairBoardList.setVisibility(View.VISIBLE);
+                binding.lostItemBoardList.setVisibility(View.GONE);
+                binding.roomMateBoardList.setVisibility(View.GONE);
+            }
+        });
+        binding.lostItemBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.repairBoardList.setVisibility(View.GONE);
+                binding.lostItemBoardList.setVisibility(View.VISIBLE);
+                binding.roomMateBoardList.setVisibility(View.GONE);
+            }
+        });
+        binding.roomMateBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.repairBoardList.setVisibility(View.GONE);
+                binding.lostItemBoardList.setVisibility(View.GONE);
+                binding.roomMateBoardList.setVisibility(View.VISIBLE);
+            }
+        });
+
+        binding.writeBoardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireContext(), WriteBoardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
+    }
+
+    // binding 해제
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
