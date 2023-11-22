@@ -1,8 +1,10 @@
 package com.ssu.kisyuksa;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -71,24 +73,33 @@ public class MainBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 binding.repairBoardList.setVisibility(View.VISIBLE);
+                binding.repairBoard.setTextColor(Color.BLACK);
                 binding.lostItemBoardList.setVisibility(View.GONE);
+                binding.lostItemBoard.setTextColor(Color.parseColor("#b4b4b4"));
                 binding.roomMateBoardList.setVisibility(View.GONE);
+                binding.roomMateBoard.setTextColor(Color.parseColor("#b4b4b4"));
             }
         });
         binding.lostItemBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 binding.repairBoardList.setVisibility(View.GONE);
+                binding.repairBoard.setTextColor(Color.parseColor("#b4b4b4"));
                 binding.lostItemBoardList.setVisibility(View.VISIBLE);
+                binding.lostItemBoard.setTextColor(Color.BLACK);
                 binding.roomMateBoardList.setVisibility(View.GONE);
+                binding.roomMateBoard.setTextColor(Color.parseColor("#b4b4b4"));
             }
         });
         binding.roomMateBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 binding.repairBoardList.setVisibility(View.GONE);
+                binding.repairBoard.setTextColor(Color.parseColor("#b4b4b4"));
                 binding.lostItemBoardList.setVisibility(View.GONE);
+                binding.lostItemBoard.setTextColor(Color.parseColor("#b4b4b4"));
                 binding.roomMateBoardList.setVisibility(View.VISIBLE);
+                binding.roomMateBoard.setTextColor(Color.BLACK);
             }
         });
 
