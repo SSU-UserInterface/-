@@ -69,7 +69,7 @@
                 android:layout_margin="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_wblue_btn"
+                android:background="@drawable/ic_blue_btn"
                 android:fontFamily="@font/pretendardsemibold"
                 android:textSize="20dp"
                 android:text="수정"

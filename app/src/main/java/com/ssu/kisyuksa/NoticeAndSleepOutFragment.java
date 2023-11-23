@@ -1,5 +1,6 @@
 package com.ssu.kisyuksa;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.ssu.kisyuksa.databinding.FragmentNoticeAndSleepoverBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +26,7 @@ public class NoticeAndSleepOutFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    FragmentNoticeAndSleepoverBinding binding; //binding 변수
 
     public NoticeAndSleepOutFragment() {
         // Required empty public constructor
@@ -53,12 +57,53 @@ public class NoticeAndSleepOutFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notice_and_sleepover, container, false);
+        binding = FragmentNoticeAndSleepoverBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        binding.sleepoverApplyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireContext(), SleepOutApplicationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.dietButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireContext(), DormitoryMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.sleepoverListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireContext(), SleepOutListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.noticeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireContext(), NoticeActivity.class);
+                startActivity(intent);
+            }
+        });
+        return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        binding=null;
     }
 }
