@@ -189,7 +189,7 @@
             android:id="@+id/lost_item_board_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible">
+            android:visibility="gone">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -211,7 +211,7 @@
                         android:layout_margin="10dp"
                         android:textSize="20dp"
                         android:fontFamily="@font/pretendardsemibold"
-                        android:text="contents 내용 ex) A동 2층 샤워실 고장"/>
+                        android:text="잃어버림 ㅠㅠ"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -230,7 +230,7 @@
                         android:layout_margin="10dp"
                         android:textSize="20dp"
                         android:fontFamily="@font/pretendardsemibold"
-                        android:text="contents 내용 ex) A동 2층 샤워실 고장"/>
+                        android:text="잃어버림 ㅠㅜ"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -249,45 +249,7 @@
                         android:layout_margin="10dp"
                         android:textSize="20dp"
                         android:fontFamily="@font/pretendardsemibold"
-                        android:text="contents 내용 ex) A동 2층 샤워실 고장"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/edit_text_gray"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="작성 시간 ex) 2023-10-01 19:00"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/pretendardsemibold"
-                        android:text="contents 내용 ex) A동 2층 샤워실 고장"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/edit_text_gray"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="작성 시간 ex) 2023-10-01 19:00"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/pretendardsemibold"
-                        android:text="contents 내용 ex) A동 2층 샤워실 고장"/>
+                        android:text="분실물 찾아요"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -298,7 +260,7 @@
             android:id="@+id/room_mate_board_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible">
+            android:visibility="gone">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -320,7 +282,7 @@
                         android:layout_margin="10dp"
                         android:textSize="20dp"
                         android:fontFamily="@font/pretendardsemibold"
-                        android:text="contents 내용 ex) A동 2층 샤워실 고장"/>
+                        android:text="룸메  구함"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -339,75 +301,19 @@
                         android:layout_margin="10dp"
                         android:textSize="20dp"
                         android:fontFamily="@font/pretendardsemibold"
-                        android:text="contents 내용 ex) A동 2층 샤워실 고장"/>
+                        android:text="착한 룸메 구해요"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/edit_text_gray"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="작성 시간 ex) 2023-10-01 19:00"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/pretendardsemibold"
-                        android:text="contents 내용 ex) A동 2층 샤워실 고장"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/edit_text_gray"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="작성 시간 ex) 2023-10-01 19:00"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/pretendardsemibold"
-                        android:text="contents 내용 ex) A동 2층 샤워실 고장"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/edit_text_gray"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="작성 시간 ex) 2023-10-01 19:00"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/pretendardsemibold"
-                        android:text="contents 내용 ex) A동 2층 샤워실 고장"/>
-                </LinearLayout>
-
             </LinearLayout>
 
         </ScrollView>
 
         <ImageView
+            android:id="@+id/write_board_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/chat_plus"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="80dp"
+            android:layout_marginRight="10dp"
             android:layout_gravity="right|bottom"/>
     </FrameLayout>
 
