@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "778270850469",
+    "project_id": "android-project-kisyuksa",
+    "storage_bucket": "android-project-kisyuksa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778270850469:android:ab8d1b812bbb761433fc4c",
+        "android_client_info": {
+          "package_name": "com.ssu.kisyuksa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjcCWPK34J87T_Qrkgft-D5D4BTH-bDio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
