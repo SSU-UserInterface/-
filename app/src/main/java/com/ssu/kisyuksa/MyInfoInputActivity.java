@@ -45,17 +45,18 @@ public class MyInfoInputActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // 사용자가 입력한 값 가져오기
                 String name = binding.etMyinfoinputName.getText().toString();
+                String stId = binding.etMyinfoinputStId.getText().toString();
                 String room = binding.etMyinfoinputRoom.getText().toString();
                 String room2 = binding.etMyinfoinputRoom3.getText().toString();
                 String nickname = binding.etMyinfoinputNickname.getText().toString();
 
                 // 사용자 정보 Firestore에 저장하기
-                saveUserInfo(name, room, room2, nickname);
+                saveUserInfo(name, stId, room, room2, nickname);
             }
         });
     }
 
-    private void saveUserInfo(String name, String room, String room2, String nickname) {
+    private void saveUserInfo(String name, String stId, String room, String room2, String nickname) {
         // 사용자 생성
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -70,6 +71,7 @@ public class MyInfoInputActivity extends AppCompatActivity {
                                 // 사용자 정보를 Firestore에 저장
                                 Map<String, Object> user = new HashMap<>();
                                 user.put("name", name);
+                                user.put("stId",stId);
                                 user.put("room", room + room2);
                                 user.put("nickname",nickname);
 
