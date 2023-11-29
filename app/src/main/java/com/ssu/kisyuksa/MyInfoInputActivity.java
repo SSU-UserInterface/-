@@ -83,7 +83,7 @@ public class MyInfoInputActivity extends AppCompatActivity {
                                                     // 회원가입 성공
                                                     Toast.makeText(MyInfoInputActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                                                     // SignupActivity로 이동
-                                                    Intent intent = new Intent(MyInfoInputActivity.this, SignUpActivity.class);
+                                                    Intent intent = new Intent(MyInfoInputActivity.this, SignInActivity.class);
                                                     startActivity(intent);
                                                 } else {
                                                     // 회원가입 실패
