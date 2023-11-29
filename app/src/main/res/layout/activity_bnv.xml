@@ -25,6 +25,7 @@
         app:itemHorizontalTranslationEnabled="false"
         app:itemIconTint="@drawable/bnv_selector_color"
         app:itemIconSize="37dp"
+        app:itemActiveIndicatorStyle="@null"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
