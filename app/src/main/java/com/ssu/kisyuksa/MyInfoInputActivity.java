@@ -71,6 +71,7 @@ public class MyInfoInputActivity extends AppCompatActivity {
                                 Map<String, Object> user = new HashMap<>();
                                 user.put("name", name);
                                 user.put("room", room + room2);
+                                user.put("nickname",nickname);
 
                                 db.collection("users")
                                         .document(userId)
@@ -81,7 +82,9 @@ public class MyInfoInputActivity extends AppCompatActivity {
                                                 if (task.isSuccessful()) {
                                                     // 회원가입 성공
                                                     Toast.makeText(MyInfoInputActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                                                    // 이후 작업: 원하는 액티비티로 이동 등
+                                                    // SignupActivity로 이동
+                                                    Intent intent = new Intent(MyInfoInputActivity.this, SignUpActivity.class);
+                                                    startActivity(intent);
                                                 } else {
                                                     // 회원가입 실패
                                                     Toast.makeText(MyInfoInputActivity.this, "회원가입 실패: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
