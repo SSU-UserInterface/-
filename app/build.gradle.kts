@@ -75,4 +75,7 @@ dependencies {
     // FirebaseUI for Cloud Firestore
     implementation ("com.firebaseui:firebase-ui-firestore:8.0.0")
     implementation ("androidx.paging:paging-runtime:3.2.1")
+
+    // 파이어베이스 인증 추가
+    implementation("com.google.firebase:firebase-auth")
 }
