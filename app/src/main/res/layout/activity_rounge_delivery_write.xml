@@ -17,11 +17,13 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="30dp">
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/backButton_w"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="left"
-            android:src="@drawable/baseline_arrow_back_ios_new_24" />
+            android:src="@drawable/baseline_arrow_back_ios_new_24"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -75,7 +77,7 @@
                 tools:layout_editor_absoluteX="21dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_signup_email"
+                    android:id="@+id/delivery_menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/wgray"
@@ -122,13 +124,14 @@
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_signup_pw"
+                    android:id="@+id/delivery_num"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/wgray"
                     android:fontFamily="@font/pretendardregular"
                     android:hint="4"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    tools:ignore="DuplicateIds"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -147,13 +150,13 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_signup_next"
+            android:id="@+id/delivery_write_button"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="112dp"
-            android:background="@drawable/ic_wblue_btn"
+            android:background="@color/border_skyblue"
             android:fontFamily="@font/pretendardsemibold"
             android:text="작성 완료"
             android:textSize="18dp"
