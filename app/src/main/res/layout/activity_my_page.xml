@@ -347,7 +347,7 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/tv_mypage_btn_withdraw"
+            android:id="@+id/tv_mypage_withdraw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pretendardsemibold"
