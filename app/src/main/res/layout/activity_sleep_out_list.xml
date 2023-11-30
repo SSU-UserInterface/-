@@ -28,51 +28,12 @@
             android:gravity="center"
             android:layout_gravity="center"/>
     </FrameLayout>
-
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="none"
-        android:layout_marginTop="30dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:id="@+id/sleep_out_application_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-                <TextView
-                    android:id="@+id/title1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="제목 : 10.25 ~ 10.27"
-                    android:textSize="20dp"/>
-                <TextView
-                    android:id="@+id/content1"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="내용 : 본가 귀가로 인해 외박 신청"
-                    android:layout_below="@id/title1"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="신청 날짜"
-                    android:layout_alignParentRight="true"
-                    android:textColor="@color/gray"/>
-                <View
-                    android:layout_marginTop="15dp"
-                    android:layout_below="@id/content1"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/gray"/>
-            </RelativeLayout>
-
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/edit_text_gray">
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>
