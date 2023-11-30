@@ -29,9 +29,9 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
     ActivitySleepOutApplicationBinding binding;
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // 파베 객체
 
-    int application_num; // 외박 신청 작성 수
+    Integer application_num; // 외박 신청 작성 수
 
-    String user_id = "유저2"; //임시 변수
+    String user_id = "왤케안돼"; //임시 변수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,9 +113,10 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
 
         board_detail_data.put("contents", binding.contents.getText().toString());
         board_detail_data.put("write_time", FieldValue.serverTimestamp());
-        board_detail_data.put("sleep_out_start_date", binding.dateStart.getText().toString());
-        board_detail_data.put("sleep_out_end_date", binding.dateEnd.getText().toString());
-
+        board_detail_data.put("date", binding.dateStart.getText().toString());
+        board_detail_data.put("sleepOutStartDate", binding.dateStart.getText().toString());
+        board_detail_data.put("sleepOutEndDate", binding.dateEnd.getText().toString());
+        //board_detail_data.put("application_num", );
         //sleep_out_application.document(user_id).set(user_data);
 
         //UUID.randomUUID() 임시로 게시글 고유 키 설정
@@ -137,7 +138,7 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
                         Map<String, Object> data = document.getData();
                         Log.d("JSC", "DocumentSnapshot data: " + data);
 
-                        application_num = Integer.parseInt(data.get("num").toString());
+                        application_num = Integer.parseInt(data.get("application_num").toString());
                         application_num += 1;
 
                     } else {
