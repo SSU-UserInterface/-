@@ -21,13 +21,19 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.ssu.kisyuksa.databinding.ActivityRoungeDeliveryBinding;
 import com.ssu.kisyuksa.databinding.ActivityRoungeDelivey2Binding;
 
-public class RoungeDelivery2Activity extends AppCompatActivity {
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
+public class RoungeDelivery2Activity extends AppCompatActivity {
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();     // 데이터 베이스 접근
     private FirestorePagingAdapter<City, CityViewHolder> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +64,11 @@ public class RoungeDelivery2Activity extends AppCompatActivity {
                     @Override
                     public void onActivityResult(ActivityResult result) {
                         Intent intent = result.getData();
-
+                        FireStoreActivity fireStoreActivity = new FireStoreActivity();
+                        addDataOne(intent.getStringExtra("menu"),intent.getStringExtra("num"));
+                        refreshScreen();
+                        Log.d("TAG", intent.getStringExtra("menu"));
+                        Log.d("TAG", intent.getStringExtra("num"));
                     }
                 }
         );
@@ -146,5 +156,28 @@ public class RoungeDelivery2Activity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+
+    public void addDataOne(String string1, String string2) {
+        Log.d("TAG", "addDataOne 실행");
+        CollectionReference cities = db.collection("cities");
+        Map<String, Object> data1 = new HashMap<>();
+        data1.put("name", string1);
+        data1.put("state", "temp");
+        data1.put("country", string2);
+        data1.put("capital", false);
+        data1.put("population", 860000);
+        data1.put("regions", Arrays.asList("west_coast", "norcal"));
+        data1.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("addDataOne").set(data1);       //document 하나가 올라갔다
+    }
+
+    private void refreshScreen() {
+        // 여기서 화면을 새로 고침하는 작업을 수행
+        // 예시: 현재 액티비티를 재시작
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+
 }
 
