@@ -55,7 +55,20 @@ public class FireStoreActivity extends AppCompatActivity {
         // Access a Cloud Firestore instance from your Activity
         db = FirebaseFirestore.getInstance();   ///firebase store 객체
     }
-    private void addData() {
+    public void addDataOne(String string1, String string2) {
+        Log.d("TAG", "addDataOne 실행");
+        CollectionReference cities = db.collection("cities");
+        Map<String, Object> data1 = new HashMap<>();
+        data1.put("name", string1);
+        data1.put("state", string1);
+        data1.put("country", "addDataOne");
+        data1.put("capital", false);
+        data1.put("population", 860000);
+        data1.put("regions", Arrays.asList("west_coast", "norcal"));
+        data1.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("addDataOne").set(data1);       //document 하나가 올라갔다
+    }
+    public void addData() {
         Log.d("TAG","addData 실행");
         CollectionReference cities = db.collection("cities");
 

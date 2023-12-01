@@ -2,6 +2,7 @@ package com.ssu.kisyuksa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,11 @@ public class RoungeDeliveryWriteActivity extends AppCompatActivity {
                 String menuText = binding.deliveryMenu.getText().toString();
                 String numText = binding.deliveryNum.getText().toString();
                 Toast.makeText(RoungeDeliveryWriteActivity.this, "."+menuText+" "+ numText, Toast.LENGTH_SHORT).show();
+
+                Intent intent = getIntent();
+                intent.putExtra("menu", menuText);
+                intent.putExtra("num",numText);
+                setResult(RESULT_OK,intent);
                 finish();
             }
         });
