@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/edit_text_gray">
+        android:background="@color/white">
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

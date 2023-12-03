@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,8 +31,10 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // 파베 객체
 
     Integer application_num; // 외박 신청 작성 수
+    Intent intent;
+    Boolean throughIntent;
 
-    String user_id = "왤케안돼"; //임시 변수
+    String user_id = "TEST"; //임시 변수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +45,29 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
 
         initializeCloudFirestore();
 
+        intent = getIntent();
+
+        // fix탭으로 로 열었을 때
+        if (intent.hasExtra("FIX") && intent.hasExtra("TITLE")) {
+            binding.contents.setText(intent.getStringExtra("CONTENTS"));
+        }
+
         binding.sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //get_board_num();
-                Log.d("jsc2", "a" + application_num);
                 addData();
-                //update_board_num();
-                finish();
+                if (intent.hasExtra("FIX") && intent.hasExtra("TITLE")){
+                    FirebaseFirestore.getInstance().collection("sleep_out_application").
+                            document(user_id).collection("sleep_out_application").document(intent.getStringExtra("TITLE")).delete();
+                    Intent intent2 = new Intent(SleepOutApplicationActivity.this, SleepOutListActivity.class);
+                    intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent2);
+                    Log.d("jsc", "리스트화면으로");
+                }
+                else {
+                    finish();
+                    Log.d("jsc", "finish");
+                }
             }
         });
 
@@ -69,7 +87,7 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
 
-                        binding.dateStart.setText(year + "년 " + (monthOfYear + 1) + "월" + dayOfMonth + "일");
+                        binding.dateStart.setText(year + "." + (monthOfYear + 1) + "." + dayOfMonth);
                     }
                 }, year, month, day);
                 dateDialog.show();
@@ -92,7 +110,7 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
 
-                        binding.dateEnd.setText(year + "년 " + (monthOfYear + 1) + "월" + dayOfMonth + "일");
+                        binding.dateEnd.setText(year + "." + (monthOfYear + 1) + "." + dayOfMonth);
                     }
                 }, year, month, day);
                 dateDialog.show();
@@ -112,15 +130,15 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
         user_data.put("name", user_id);
 
         board_detail_data.put("contents", binding.contents.getText().toString());
-        board_detail_data.put("write_time", FieldValue.serverTimestamp());
-        board_detail_data.put("date", binding.dateStart.getText().toString());
-        board_detail_data.put("sleepOutStartDate", binding.dateStart.getText().toString());
-        board_detail_data.put("sleepOutEndDate", binding.dateEnd.getText().toString());
+        board_detail_data.put("timestamp", FieldValue.serverTimestamp());
+        //board_detail_data.put("date", binding.dateStart.getText().toString());
+        board_detail_data.put("start", binding.dateStart.getText().toString());
+        board_detail_data.put("end", binding.dateEnd.getText().toString());
         //board_detail_data.put("application_num", );
         //sleep_out_application.document(user_id).set(user_data);
 
         //UUID.randomUUID() 임시로 게시글 고유 키 설정
-        sleep_out_application.document(user_id).collection("sleep_out_application").document(UUID.randomUUID().toString()).set(board_detail_data);
+        sleep_out_application.document(user_id).collection("sleep_out_application").document(binding.dateStart.getText().toString()).set(board_detail_data);
 
     }
 

@@ -1,32 +1,32 @@
 package com.ssu.kisyuksa;
+import android.util.Log;
+
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.ServerTimestamp;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class SleepApplication {
     private String contents;
     private String date;
-    private String sleepOutStartDate;
-    private String sleep_out_end_date;
-
-    private int application_num;
-
+    private String start;
+    private String end;
     @ServerTimestamp
-    private Timestamp timestamp; // server timestamp
+    private Timestamp timestamp;
 
     public SleepApplication() {
         this.contents = "";
         this.date = "";
-        this.sleepOutStartDate = "";
-        this.sleep_out_end_date = "";
+        this.start = "";
+        this.end = "";
     }
-    public SleepApplication(String contents, String date, String start_date, String end_date) {
+    public SleepApplication(String contents, String date, String start, String end, Timestamp timestamp) {
         this.contents = contents;
         this.date = date;
-        this.sleepOutStartDate = start_date;
-        /*this.sleep_out_end_date = end_date;*/
-
+        this.start = start;
+        this.end = end;
     }
 
     public String getContents() {
@@ -35,15 +35,19 @@ public class SleepApplication {
     public String getDate() {
         return date;
     }
-    public String getStartDate() {
-        return sleepOutStartDate;
+    public String getStart() {
+        return start;
     }
-    public String getEndDate() {
-        return sleep_out_end_date;
+    public String getEnd() {
+        return end;
     }
-
-    public int getApplication_num(){
-        return application_num;
+    public String getTimestamp() {
+        Date date = timestamp.toDate();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        return year + "." + month + "." + day;
     }
-    public Timestamp getTimestamp() { return timestamp; }
 }
