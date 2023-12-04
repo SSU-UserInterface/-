@@ -13,10 +13,13 @@
         android:theme="@style/Theme.Kisyuksa"
         tools:targetApi="31">
         <activity
-            android:name=".FireStoreActivity"
-            android:exported="false"/>
+            android:name=".MainBoardActivity"
+            android:exported="false" />
         <activity
-            android:name=".BoardContents"
+            android:name=".FireStoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BoardContentsActivity"
             android:exported="false" />
         <activity
             android:name=".WriteBoardActivity"

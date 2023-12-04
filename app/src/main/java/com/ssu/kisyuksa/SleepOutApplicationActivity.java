@@ -28,12 +28,8 @@ import java.util.UUID;
 public class SleepOutApplicationActivity extends AppCompatActivity {
 
     ActivitySleepOutApplicationBinding binding;
-    FirebaseFirestore db = FirebaseFirestore.getInstance(); // 파베 객체
-
-    Integer application_num; // 외박 신청 작성 수
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     Intent intent;
-    Boolean throughIntent;
-
     String user_id = "TEST"; //임시 변수
 
     @Override

@@ -4,15 +4,26 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.paging.PagingConfig;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
+import com.firebase.ui.firestore.paging.FirestorePagingOptions;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.ssu.kisyuksa.databinding.FragmentMainBoardBinding;
 import com.ssu.kisyuksa.databinding.FragmentNoticeAndSleepoverBinding;
+import com.ssu.kisyuksa.databinding.ItemBoardBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,12 +32,9 @@ import com.ssu.kisyuksa.databinding.FragmentNoticeAndSleepoverBinding;
  */
 public class MainBoardFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -36,15 +44,6 @@ public class MainBoardFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NoticeBoardFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static MainBoardFragment newInstance(String param1, String param2) {
         MainBoardFragment fragment = new MainBoardFragment();
         Bundle args = new Bundle();
@@ -56,6 +55,7 @@ public class MainBoardFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Log.d("jsc", "oncreate");
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -66,52 +66,18 @@ public class MainBoardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d("jsc", "oncreateView");
         binding = FragmentMainBoardBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
-        binding.repairBoard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.repairBoardList.setVisibility(View.VISIBLE);
-                binding.repairBoard.setTextColor(Color.BLACK);
-                binding.lostItemBoardList.setVisibility(View.GONE);
-                binding.lostItemBoard.setTextColor(Color.parseColor("#b4b4b4"));
-                binding.roomMateBoardList.setVisibility(View.GONE);
-                binding.roomMateBoard.setTextColor(Color.parseColor("#b4b4b4"));
-            }
-        });
-        binding.lostItemBoard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.repairBoardList.setVisibility(View.GONE);
-                binding.repairBoard.setTextColor(Color.parseColor("#b4b4b4"));
-                binding.lostItemBoardList.setVisibility(View.VISIBLE);
-                binding.lostItemBoard.setTextColor(Color.BLACK);
-                binding.roomMateBoardList.setVisibility(View.GONE);
-                binding.roomMateBoard.setTextColor(Color.parseColor("#b4b4b4"));
-            }
-        });
-        binding.roomMateBoard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.repairBoardList.setVisibility(View.GONE);
-                binding.repairBoard.setTextColor(Color.parseColor("#b4b4b4"));
-                binding.lostItemBoardList.setVisibility(View.GONE);
-                binding.lostItemBoard.setTextColor(Color.parseColor("#b4b4b4"));
-                binding.roomMateBoardList.setVisibility(View.VISIBLE);
-                binding.roomMateBoard.setTextColor(Color.BLACK);
-            }
-        });
-
-        binding.writeBoardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(requireContext(), WriteBoardActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        Intent intent = new Intent(getActivity(), MainBoardActivity.class);
+        startActivity(intent);
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        Log.d("jsc", "onstart");
+        super.onStart();
     }
 
     // binding 해제
