@@ -36,7 +36,7 @@
                 android:gravity="center|center_horizontal">
                 <TextView
                     android:id="@+id/notice_contents"
-                    android:text="중간 간식 행사 - 임시 텍스트"
+                    android:text="시험기간 통금해제 및 자율학습실 추가개방"
                     android:textStyle="bold"
                     android:layout_marginLeft="2dp"
                     android:layout_width="match_parent"
@@ -133,12 +133,10 @@
                         android:layout_height="2dp"
                         android:background="@color/gray"/>
                 </LinearLayout>
-                <TextView
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:layout_marginTop="15dp"
-                    android:text="식단사진"
-                    android:background="@color/edit_text_gray"/>
+                    android:layout_height="150dp"
+                    android:src="@drawable/img_today_diet"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

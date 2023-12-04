@@ -38,7 +38,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="5dp">
             <RelativeLayout
                 android:id="@+id/sleep_out_application_1"
                 android:layout_width="match_parent"
@@ -48,7 +49,7 @@
                     android:id="@+id/title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="(제목) ex 중간 간식 행사"
+                    android:text="시험기간 통금해제 및 자율학습실 추가개방"
                     android:textSize="20dp"/>
                 <TextView
                     android:id="@+id/content1"
@@ -56,17 +57,81 @@
                     android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="(내용) ex 중간 간식행사를 진행합니다..."
+                    android:text="기말고사 시험기간, 출입통제시간이 해제되고 자율학습실을 추가 개방합니다."
                     android:layout_below="@id/title1"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="작성 날짜"
+                    android:text=""
                     android:layout_alignParentRight="true"
                     android:textColor="@color/gray"/>
                 <View
                     android:layout_marginTop="15dp"
                     android:layout_below="@id/content1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/gray"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/sleep_out_application_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:id="@+id/title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2023학년도 동계방학 레지던스홀 추가 입사 모집안내 "
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/content2"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2023년 12월 1일(금) ~ 3일(일) 17:00\n레지던스홀 홈페이지 (http://ssudorm.ssu.ac.kr)에서 인터넷으로 신청"
+                    android:layout_below="@id/title2"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/gray"/>
+                <View
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@id/content2"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/gray"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/sleep_out_application_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:id="@+id/title3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2023학년도 동계방학 레지던스홀 입사 모집안내 "
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/content3"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="숭실대학교 레지던스홀 입사 모집안내\n레지던스홀 홈페이지 (http://ssudorm.ssu.ac.kr)에서 인터넷으로 신청"
+                    android:layout_below="@id/title3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/gray"/>
+                <View
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@id/content3"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:background="@color/gray"/>
