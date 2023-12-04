@@ -131,6 +131,138 @@ public class MyPageActivity extends AppCompatActivity {
             }
         });
 
+        // btn_mypage_nickname_change 클릭 시 이벤트 처리
+        binding.btnMypageNicknameChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 다이얼로그 생성
+                AlertDialog.Builder builder = new AlertDialog.Builder(MyPageActivity.this);
+                builder.setIcon(R.drawable.ic_dialog);
+                builder.setTitle("닉네임 변경");
+
+                // 다이얼로그에 EditText 추가
+                final EditText input = new EditText(MyPageActivity.this);
+                input.setHint("새로운 닉네임을 입력하세요");
+                builder.setView(input);
+
+                // 다이얼로그 버튼 설정
+                builder.setPositiveButton("저장", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final String newNickname = input.getText().toString().trim();
+
+                        // Firebase에서 현재 사용자 가져오기
+                        FirebaseUser currentUser = mAuth.getCurrentUser();
+                        if (currentUser != null) {
+                            String userId = currentUser.getUid();
+
+                            // Firestore에서 해당 사용자 문서 가져오기
+                            DocumentReference userRef = db.collection("users").document(userId);
+                            userRef.update("nickname", newNickname)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                // 닉네임 업데이트 성공
+                                                Toast.makeText(MyPageActivity.this, "닉네임이 업데이트되었습니다.", Toast.LENGTH_SHORT).show();
+
+                                                // 닉네임을 TextView에 반영
+                                                binding.tvMypageNickname.setText(newNickname); // 변경된 닉네임을 tv_mypage_nickname에 반영
+                                            } else {
+                                                // 닉네임 업데이트 실패
+                                                Toast.makeText(MyPageActivity.this, "닉네임 업데이트 실패: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 취소 버튼을 누르면 다이얼로그를 닫습니다.
+                        dialog.cancel();
+                    }
+                });
+
+                // 다이얼로그 생성 및 표시
+                AlertDialog dialog = builder.create();
+                dialog.setCancelable(false);
+                dialog.show();
+            }
+        });
+
+        // btn_mypage_status_change 클릭 시 이벤트 처리
+        binding.btnMypageStatusChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 다이얼로그 생성
+                AlertDialog.Builder builder = new AlertDialog.Builder(MyPageActivity.this);
+                builder.setIcon(R.drawable.ic_dialog);
+                builder.setTitle("방 번호 변경");
+
+                // 다이얼로그에 EditText 추가
+                final EditText input = new EditText(MyPageActivity.this);
+                input.setHint("새로운 방 번호를 입력하세요");
+                builder.setView(input);
+
+                // 다이얼로그 버튼 설정
+                builder.setPositiveButton("저장", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final String newRoom = input.getText().toString().trim();
+
+                        // Firebase에서 현재 사용자 가져오기
+                        FirebaseUser currentUser = mAuth.getCurrentUser();
+                        if (currentUser != null) {
+                            String userId = currentUser.getUid();
+
+                            // Firestore에서 해당 사용자 문서 가져오기
+                            DocumentReference userRef = db.collection("users").document(userId);
+                            userRef.update("room", newRoom)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                // 방 번호 업데이트 성공
+                                                Toast.makeText(MyPageActivity.this, "방 번호가 업데이트되었습니다.", Toast.LENGTH_SHORT).show();
+
+                                                // 방 번호를 숫자와 문자로 분리하여 TextView에 반영
+                                                if (newRoom != null && !newRoom.isEmpty() && newRoom.length() >= 2) {
+                                                    String number = newRoom.replaceAll("[^0-9]", ""); // 숫자 추출
+                                                    String alpha = newRoom.replaceAll("[^a-zA-Z]", ""); // 문자 추출
+
+                                                    binding.tvMypageNumber.setText(number); // 숫자를 tv_mypage_number에 반영
+                                                    binding.tvMypageAlpha.setText(alpha); // 문자를 tv_mypage_alpha에 반영
+                                                }
+                                            } else {
+                                                // 방 번호 업데이트 실패
+                                                Toast.makeText(MyPageActivity.this, "방 번호 업데이트 실패: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 취소 버튼을 누르면 다이얼로그를 닫습니다.
+                        dialog.cancel();
+                    }
+                });
+
+                // 다이얼로그 생성 및 표시
+                AlertDialog dialog = builder.create();
+                dialog.setCancelable(false);
+                dialog.show();
+            }
+        });
+
+
+
 
 
         //로그아웃 다이얼로그
