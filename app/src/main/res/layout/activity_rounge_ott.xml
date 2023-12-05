@@ -61,21 +61,21 @@
         app:layout_constraintTop_toTopOf="@+id/line1">
 
 
-        <ImageButton
-            android:id="@+id/ott_write_button"
-            android:layout_width="74dp"
-            android:layout_height="38dp"
-            android:layout_gravity="left"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="28dp"
-            android:src="@drawable/chat_plus"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="MissingConstraints" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/ott_"-->
+<!--            android:layout_width="74dp"-->
+<!--            android:layout_height="38dp"-->
+<!--            android:layout_gravity="left"-->
+<!--            android:layout_marginEnd="4dp"-->
+<!--            android:layout_marginBottom="28dp"-->
+<!--            android:src="@drawable/chat_plus"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            tools:ignore="MissingConstraints" />-->
 
         <GridLayout
-            android:layout_width="298dp"
-            android:layout_height="535dp"
+            android:layout_width="301dp"
+            android:layout_height="471dp"
             android:layout_marginTop="40dp"
             android:columnCount="2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -85,12 +85,13 @@
             tools:ignore="MissingConstraints">
 
             <android.widget.Button
+                android:id="@+id/netFlix"
                 android:layout_width="116dp"
                 android:layout_height="105dp"
                 android:layout_margin="15dp"
                 android:layout_weight="5"
                 android:background="@drawable/ic_border_wblue_button"
-                android:text="넷플릭스 \n 3명 구해요!"
+                android:text="NETFlIX"
                 android:textSize="20dp"
                 android:textStyle="bold"
 
@@ -99,12 +100,13 @@
                 tools:layout_editor_absoluteY="65dp" />
 
             <android.widget.Button
+                android:id="@+id/TVING"
                 android:layout_width="116dp"
                 android:layout_height="105dp"
                 android:layout_margin="15dp"
                 android:layout_weight="5"
                 android:background="@drawable/ic_border_wblue_button"
-                android:text="넷플릭스 \n 3명 구해요!"
+                android:text="TVING"
                 android:textSize="20dp"
                 android:textStyle="bold"
 
@@ -113,12 +115,13 @@
                 tools:layout_editor_absoluteY="65dp" />
 
             <android.widget.Button
+                android:id="@+id/DESNEY"
                 android:layout_width="116dp"
                 android:layout_height="105dp"
                 android:layout_margin="15dp"
                 android:layout_weight="5"
                 android:background="@drawable/ic_border_wblue_button"
-                android:text="넷플릭스 \n 3명 구해요!"
+                android:text="DESNEY\nPLUS"
                 android:textSize="20dp"
                 android:textStyle="bold"
 
@@ -127,12 +130,42 @@
                 tools:layout_editor_absoluteY="65dp" />
 
             <android.widget.Button
+                android:id="@+id/Wathcha"
                 android:layout_width="116dp"
                 android:layout_height="105dp"
                 android:layout_margin="15dp"
                 android:layout_weight="5"
                 android:background="@drawable/ic_border_wblue_button"
-                android:text="넷플릭스 \n 3명 구해요!"
+                android:text="Wathcha"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="70dp"
+                tools:layout_editor_absoluteY="65dp" />
+
+            <android.widget.Button
+                android:id="@+id/wave"
+                android:layout_width="116dp"
+                android:layout_height="105dp"
+                android:layout_margin="15dp"
+                android:layout_weight="5"
+                android:background="@drawable/ic_border_wblue_button"
+                android:text="웨이브"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="70dp"
+                tools:layout_editor_absoluteY="65dp" />
+            <android.widget.Button
+                android:id="@+id/laftel"
+                android:layout_width="116dp"
+                android:layout_height="105dp"
+                android:layout_margin="15dp"
+                android:layout_weight="5"
+                android:background="@drawable/ic_border_wblue_button"
+                android:text="라프텔"
                 android:textSize="20dp"
                 android:textStyle="bold"
 

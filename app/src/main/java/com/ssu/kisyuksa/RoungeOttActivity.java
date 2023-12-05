@@ -36,15 +36,47 @@ public class RoungeOttActivity extends AppCompatActivity {
                 }
         );
         
-        binding.ottWriteButton.setOnClickListener(view -> {
-            //
-            Intent intent = new Intent(this, RoungeOttWriteActivity.class);
-//            intent.putExtra("time",1);
-            launcher.launch(intent);
-        });
+//        binding.ottWriteButton.setOnClickListener(view -> {
+//            //
+//            Intent intent = new Intent(this, RoungeOttWriteActivity.class);
+////            intent.putExtra("time",1);
+//            launcher.launch(intent);
+//        });
 
         binding.backButtonOtt.setOnClickListener(view -> {
             finish();
         });
+
+        binding.netFlix.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RoungeOtt2Activity.class);
+            intent.putExtra("ottChoice", 1);
+            launcher.launch(intent);
+        });
+        binding.TVING.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RoungeOtt2Activity.class);
+            intent.putExtra("ottChoice", 2);
+            launcher.launch(intent);
+        });
+        binding.DESNEY.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RoungeOtt2Activity.class);
+            intent.putExtra("ottChoice", 3);
+            launcher.launch(intent);
+        });
+        binding.Wathcha.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RoungeOtt2Activity.class);
+            intent.putExtra("ottChoice", 4);
+            launcher.launch(intent);
+        });
+        binding.wave.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RoungeOtt2Activity.class);
+            intent.putExtra("ottChoice", 5);
+            launcher.launch(intent);
+        });
+        binding.laftel.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RoungeOtt2Activity.class);
+            intent.putExtra("ottChoice", 6);
+            launcher.launch(intent);
+        });
+
     }
 }

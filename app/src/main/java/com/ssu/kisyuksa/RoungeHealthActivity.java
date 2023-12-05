@@ -1,12 +1,14 @@
 package com.ssu.kisyuksa;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +17,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.module.AppGlideModule;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -126,41 +134,41 @@ public class RoungeHealthActivity extends AppCompatActivity {
         });
     }
 
-    private void uploadFromStream() {
-        // Get a default Storage bucket
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-
-        // Points to the root reference
-        StorageReference storageRef = storage.getReference();
-
-        // Create a reference for a new image
-        StorageReference riversImagesRef = storageRef.child(getPath("jpg"));
-
-        try {
-            File file = new File(getFilesDir(), "rivers.jpg");
-            InputStream stream = new FileInputStream(file);
-
-            UploadTask uploadTask = riversImagesRef.putStream(stream);  //스토리지만 주면 알아서~
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    // Handle unsuccessful uploads
-                    Log.d(TAG, "스트림으로 빼온 이미지 데이터 업로드 실패");
-                }
-            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                    // ...
-                    Log.d(TAG, "스트림으로 빼온 이미지 데이터 업로드 성공");
-//                    launchDownloadActivity(taskSnapshot.getMetadata().getReference().toString());
-                    downloadImageTo(taskSnapshot.getMetadata().getReference().toString());
-                }
-            });
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void uploadFromStream() {
+//        // Get a default Storage bucket
+//        FirebaseStorage storage = FirebaseStorage.getInstance();
+//
+//        // Points to the root reference
+//        StorageReference storageRef = storage.getReference();
+//
+//        // Create a reference for a new image
+//        StorageReference riversImagesRef = storageRef.child(getPath("jpg"));
+//
+//        try {
+//            File file = new File(getFilesDir(), "rivers.jpg");
+//            InputStream stream = new FileInputStream(file);
+//
+//            UploadTask uploadTask = riversImagesRef.putStream(stream);  //스토리지만 주면 알아서~
+//            uploadTask.addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception exception) {
+//                    // Handle unsuccessful uploads
+//                    Log.d(TAG, "스트림으로 빼온 이미지 데이터 업로드 실패");
+//                }
+//            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+//                    // ...
+//                    Log.d(TAG, "스트림으로 빼온 이미지 데이터 업로드 성공");
+////                    launchDownloadActivity(taskSnapshot.getMetadata().getReference().toString());
+//                    downloadImageTo(taskSnapshot.getMetadata().getReference().toString());
+//                }
+//            });
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private String getPath(String extension) {
         String uid = getUidOfCurrentUser();
@@ -225,17 +233,25 @@ public class RoungeHealthActivity extends AppCompatActivity {
 
         // ImageView in your Activity
         ImageView imageView = binding.downloadedImageview;
-        imageView.setVisibility(View.VISIBLE);
 
-        // Download directly from StorageReference using Glide
-        // (See MyAppGlideModule for Loader registration)
-        Glide.with(this /* context */)
+        GlideApp.with(this /* context */)
                 .load(gsReference)
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        Log.e(TAG, "Glide load failed", e);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        return false;
+                    }
+                })
                 .into(imageView);
 
-
-
-        Log.d(TAG,"글라이드 함수 실행");
+        Log.d(TAG,"글라이드 함수 실행 후");
     }
 
 }
+

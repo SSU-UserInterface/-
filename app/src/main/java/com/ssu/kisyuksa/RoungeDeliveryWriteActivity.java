@@ -28,13 +28,19 @@ public class RoungeDeliveryWriteActivity extends AppCompatActivity {
         binding.deliveryWriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String menuText = binding.deliveryMenu.getText().toString();
-                String numText = binding.deliveryNum.getText().toString();
-                Toast.makeText(RoungeDeliveryWriteActivity.this, "."+menuText+" "+ numText, Toast.LENGTH_SHORT).show();
+                String menu = binding.deliveryMenu.getText().toString();
+                //int numText = Integer.parseInt(binding.deliveryNum.getText().toString());
+                int maxNum = Integer.parseInt(binding.deliveryNum.getText().toString());
+                String chatRoom = binding.chatRoomText.getText().toString();
+
+
+                Toast.makeText(RoungeDeliveryWriteActivity.this, "."+menu+" "+ maxNum, Toast.LENGTH_SHORT).show();
 
                 Intent intent = getIntent();
-                intent.putExtra("menu", menuText);
-                intent.putExtra("num",numText);
+                intent.putExtra("menu", menu);
+                //intent.putExtra("numText",numText);
+                intent.putExtra("maxNum" , maxNum);
+                intent.putExtra("chatRoom", chatRoom);
                 setResult(RESULT_OK,intent);
                 finish();
             }

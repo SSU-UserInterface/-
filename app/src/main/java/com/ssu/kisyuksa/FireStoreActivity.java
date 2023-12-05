@@ -36,6 +36,11 @@ public class FireStoreActivity extends AppCompatActivity {
         initializeCloudFirestore();
 
         addData();Log.d("TAG","addData() 실행후");
+        addData_delivery();
+        addData_delivery_lunch();
+        addData_delivery_dinner();
+        addData_ott_netFlix();
+        addData_ott_tving();
         //        getADocument();   // Document관련
 
 
@@ -66,7 +71,105 @@ public class FireStoreActivity extends AppCompatActivity {
         data1.put("population", 860000);
         data1.put("regions", Arrays.asList("west_coast", "norcal"));
         data1.put("timestamp", FieldValue.serverTimestamp());
-        cities.document("addDataOne").set(data1);       //document 하나가 올라갔다
+        cities.document("document1").set(data1);       //document 하나가 올라갔다
+    }
+
+    public void addData_delivery() {
+        Log.d("TAG","addData_delivery 실행");
+        CollectionReference cities = db.collection("delivery_branch");
+
+        Map<String, Object> data1 = new HashMap<>();
+        data1.put("menu", "pizza");
+        data1.put("numText", 3);
+        data1.put("maxNum", 5);
+        data1.put("charRoom", "3번방");
+        data1.put("list", Arrays.asList("list1", "list2"));
+        data1.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("pizza").set(data1);
+
+// 추가 데이터 예시
+        Map<String, Object> data2 = new HashMap<>();
+        data2.put("menu", "pasta");
+        data2.put("numText", 2);
+        data2.put("maxNum", 4);
+        data2.put("charRoom", "2번방");
+        data2.put("list", Arrays.asList("item1", "item2", "item3"));
+        data2.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("pasta").set(data2);
+
+        Map<String, Object> data3 = new HashMap<>();
+        data3.put("menu", "burger");
+        data3.put("numText", 5);
+        data3.put("maxNum", 8);
+        data3.put("charRoom", "5번방");
+        data3.put("list", Arrays.asList("cheese", "bacon", "lettuce"));
+        data3.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("burger").set(data3);   //document 하나가 올라갔다
+    }
+    public void addData_delivery_lunch() {
+        Log.d("TAG","addData_delivery 실행");
+        CollectionReference cities = db.collection("delivery_lunch");
+
+        Map<String, Object> data1 = new HashMap<>();
+        data1.put("menu", "pizza");
+        data1.put("numText", 3);
+        data1.put("maxNum", 5);
+        data1.put("charRoom", "3번방");
+        data1.put("list", Arrays.asList("list1", "list2"));
+        data1.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("pizza").set(data1);
+
+// 추가 데이터 예시
+        Map<String, Object> data2 = new HashMap<>();
+        data2.put("menu", "pasta");
+        data2.put("numText", 2);
+        data2.put("maxNum", 4);
+        data2.put("charRoom", "2번방");
+        data2.put("list", Arrays.asList("item1", "item2", "item3"));
+        data2.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("pasta").set(data2);
+
+        Map<String, Object> data3 = new HashMap<>();
+        data3.put("menu", "burger");
+        data3.put("numText", 5);
+        data3.put("maxNum", 8);
+        data3.put("charRoom", "5번방");
+        data3.put("list", Arrays.asList("cheese", "bacon", "lettuce"));
+        data3.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("burger").set(data3);   //document 하나가 올라갔다
+    }
+
+    public void addData_delivery_dinner() {
+        Log.d("TAG","addData_delivery 실행");
+        CollectionReference cities = db.collection("delivery_dinner");
+
+        Map<String, Object> data1 = new HashMap<>();
+        data1.put("menu", "pizza");
+        data1.put("numText", 3);
+        data1.put("maxNum", 5);
+        data1.put("charRoom", "3번방");
+        data1.put("list", Arrays.asList("list1", "list2"));
+        data1.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("pizza").set(data1);
+
+// 추가 데이터 예시
+        Map<String, Object> data2 = new HashMap<>();
+        data2.put("menu", "pasta");
+        data2.put("numText", 2);
+        data2.put("maxNum", 4);
+        data2.put("charRoom", "2번방");
+        data2.put("list", Arrays.asList("item1", "item2", "item3"));
+        data2.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("pasta").set(data2);
+
+        Map<String, Object> data3 = new HashMap<>();
+        data3.put("menu", "burger");
+        data3.put("numText", 5);
+        data3.put("maxNum", 8);
+        data3.put("charRoom", "5번방");
+        data3.put("list", Arrays.asList("cheese", "bacon", "lettuce"));
+        data3.put("timestamp", FieldValue.serverTimestamp());
+        cities.document("burger").set(data3);   //document 하나가 올라갔다
     }
     public void addData() {
         Log.d("TAG","addData 실행");
@@ -151,7 +254,46 @@ public class FireStoreActivity extends AppCompatActivity {
         data8.put("regions", Arrays.asList("west", "Incheon"));
         data8.put("timestamp", FieldValue.serverTimestamp());
         cities.document("IN").set(data8);
+
     }
+    public void addData_ott_netFlix() {
+        Log.d("TAG","addData_ott실행");
+        CollectionReference ottNetFlix = db.collection("ott_netFlix");
+
+        Map<String, Object> data1 = new HashMap<>();
+        data1.put("title", "k넷플리스 자리 원해요~~");
+        data1.put("content", "기간은 3달정도 생각하고 있어요!!");
+        data1.put("list", Arrays.asList("list1", "list2"));
+        data1.put("timestamp", FieldValue.serverTimestamp());
+        ottNetFlix.document("data1").set(data1);
+
+        Map<String, Object> data2 = new HashMap<>();
+        data1.put("title", "s넷플리스 파티원 모집중");
+        data1.put("content", "선착순 2분 마감");
+        data1.put("list", Arrays.asList("list1", "list2"));
+        data1.put("timestamp", FieldValue.serverTimestamp());
+        ottNetFlix.document("data2").set(data1);
+    }
+
+    public void addData_ott_tving() {
+        Log.d("TAG","addData_ott실행");
+        CollectionReference ottNetFlix = db.collection("ott_tving");
+
+        Map<String, Object> data1 = new HashMap<>();
+        data1.put("title", "ott_tving 자리 원해요~~");
+        data1.put("content", "기간은 3달정도 생각하고 있어요!!");
+        data1.put("list", Arrays.asList("list1", "list2"));
+        data1.put("timestamp", FieldValue.serverTimestamp());
+        ottNetFlix.document("data1").set(data1);
+
+        Map<String, Object> data2 = new HashMap<>();
+        data1.put("title", "ott_tving 파티원 모집중");
+        data1.put("content", "선착순 2분 마감");
+        data1.put("list", Arrays.asList("list1", "list2"));
+        data1.put("timestamp", FieldValue.serverTimestamp());
+        ottNetFlix.document("data2").set(data1);
+    }
+
     private void getADocument() {
         DocumentReference docRef = db.collection("cities").document("SF");  ///컬랙션, document, data
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() { //document 레퍼런스 get() --> 리스너 달아준다.

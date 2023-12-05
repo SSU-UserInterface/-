@@ -27,37 +27,35 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.ssu.kisyuksa.databinding.ActivityRoungeDeliveryBinding;
 import com.ssu.kisyuksa.databinding.ActivityRoungeDelivey2Binding;
+import com.ssu.kisyuksa.databinding.ActivityRoungeOtt2Binding;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RoungeDelivery2Activity extends AppCompatActivity {
+public class RoungeOtt2Activity extends AppCompatActivity {
+    String TAG = "TAG";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();     // 데이터 베이스 접근
-    private FirestorePagingAdapter<DeliveryMenu, DeliveryMenuViewHolder> adapter;
+    private FirestorePagingAdapter<Ott, OttViewHolder> adapter;
     String collectionName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent_Back = getIntent();
-        int time3 = intent_Back.getIntExtra("time",0);
-        Log.d("TAG", "delive2 실행");
-        ActivityRoungeDelivey2Binding binding = ActivityRoungeDelivey2Binding.inflate(getLayoutInflater());
-        if (time3 == 1) {
-            binding.branch.setTextColor(ContextCompat.getColor(this, android.R.color.black));
-            binding.lunch.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray));
-            binding.dinner.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray));
-        } else if (time3 == 2) {
-            binding.branch.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray));
-            binding.lunch.setTextColor(ContextCompat.getColor(this, android.R.color.black));
-            binding.dinner.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray));
-        } else if (time3 == 3) {
-            binding.branch.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray));
-            binding.lunch.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray));
-            binding.dinner.setTextColor(ContextCompat.getColor(this, android.R.color.black));
-        }
-        setContentView(binding.getRoot());
+        int ottChoice = intent_Back.getIntExtra("ottChoice",0);
+        Log.d(TAG, "ott 실행");
+        ActivityRoungeOtt2Binding binding = ActivityRoungeOtt2Binding.inflate(getLayoutInflater());
 
+        //        if (ottChoice == 1) {
+//            //binding.branch.setTextColor(ContextCompat.getColor(this, android.R.color.black));
+//
+//        } else if (ottChoice == 2) {
+//
+//        } else if (ottChoice == 3) {
+//
+//        }
+//        setContentView(binding.getRoot());
+        setContentView(binding.getRoot());
         // launcher 생성
         ActivityResultLauncher<Intent> launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -66,17 +64,17 @@ public class RoungeDelivery2Activity extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         Intent intent = result.getData();
 //                        FireStoreActivity fireStoreActivity = new FireStoreActivity();
-                        addDataOne(intent.getStringExtra("menu"),intent.getIntExtra("maxNum",0));
+                        addDataOne(intent.getStringExtra("title"),intent.getStringExtra("content"));
                         refreshScreen();
-                        Log.d("TAG", intent.getStringExtra("menu"));
-                        Log.d("TAG", Integer.toString(intent.getIntExtra("maxNum",0)));
+                        Log.d("TAG", intent.getStringExtra("title"));
+                        Log.d("TAG", intent.getStringExtra("content"));
                     }
                 }
         );
 
         binding.writeButton.setOnClickListener(view -> {
             //
-            Intent intent = new Intent(this, RoungeDeliveryWriteActivity.class);
+            Intent intent = new Intent(this, RoungeOttWriteActivity.class);
 //            intent.putExtra("time",1);
             launcher.launch(intent);
 
@@ -95,18 +93,19 @@ public class RoungeDelivery2Activity extends AppCompatActivity {
         // The "base query" is a query with no startAt/endAt/limit clauses that the adapter can use
         // to form smaller queries for each page. It should only include where() and orderBy() clauses
 
-        if (time3 ==1 )
-            collectionName = new String("delivery_branch");
-        else if (time3 == 2)
-            collectionName = new String("delivery_lunch");
+        if (ottChoice == 1 )
+            collectionName = new String("ott_netFlix");
+        else if (ottChoice == 2)
+            collectionName = new String("ott_tving");
         else
-            collectionName = new String("delivery_dinner");
+            collectionName = new String("ott_tving");
+        Log.d(TAG, "collectionNmae 선택: "+collectionName);
 
         Query baseQuery = FirebaseFirestore.getInstance()
                 // 파이어베이스 접근
                 .collection(collectionName)
                 // 양이 어마어마할 수 있다.
-                .orderBy("menu", Query.Direction.ASCENDING);
+                .orderBy("title", Query.Direction.ASCENDING);
         //orderBy는 정렬해주는 것, query는 내가 질문한 것에 대한 대답
 
         // This configuration comes from the Paging 3 Library
@@ -120,38 +119,40 @@ public class RoungeDelivery2Activity extends AppCompatActivity {
         // The options for the adapter combine the paging configuration with query information
         // and application-specific options for lifecycle, etc.
         /// options에 쿼리가 들어가 있음!
-        FirestorePagingOptions<DeliveryMenu> options = new FirestorePagingOptions.Builder<DeliveryMenu>()
+        FirestorePagingOptions<Ott> options = new FirestorePagingOptions.Builder<Ott>()
                 /// 요 객체를 만들어야 해서 , adapter를 만들 때 넣어줘야하는 객체
                 .setLifecycleOwner(this) // an activity or a fragment
-                .setQuery(baseQuery, config, DeliveryMenu.class)
+                .setQuery(baseQuery, config, Ott.class)
                 .build();
+
+        Log.d(TAG, "err1");
         /// 어댑터가 파이어베이스와 지속적으로 연결되어 있다. 최초 쿼리가 날라간 이후에 추가되는 데이터도 adapter에 적용이되서 화면에 나온다.
-        adapter = new FirestorePagingAdapter<DeliveryMenu, DeliveryMenuViewHolder>(options) {
+        adapter = new FirestorePagingAdapter<Ott, OttViewHolder>(options) {
             @NonNull
             @Override
-            public DeliveryMenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public OttViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 // Create the ItemViewHolder
                 // ...
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(android.R.layout.simple_list_item_2, parent, false);
-                return new DeliveryMenuViewHolder(view);
+                return new OttViewHolder(view);
             }
 
-            /// 똑같은 형태 모델은 DeliveryMenu 타입
+            /// 똑같은 형태 모델은 Ott 타입
             @Override
-            protected void onBindViewHolder(@NonNull DeliveryMenuViewHolder holder,
+            protected void onBindViewHolder(@NonNull OttViewHolder holder,
                                             int position,
-                                            @NonNull DeliveryMenu model) {
+                                            @NonNull Ott model) {
                 // Bind the item to the view holder
                 // ...
                 holder.bind(model);
             }
         };
-
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        Log.d(TAG, "err2");
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_ott);       //binding.recyclerViewOtt;    //
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
+        Log.d(TAG, "err3");
     }
 
     @Override
@@ -166,32 +167,30 @@ public class RoungeDelivery2Activity extends AppCompatActivity {
         adapter.stopListening();
     }
 
-    public void addDataOne(String menu, int maxNum) {
-        Log.d("TAG","addData_delivery 실행");
+    public void addDataOne(String title, String content) {
+
         CollectionReference cities = db.collection(collectionName);
 
         Map<String, Object> data1 = new HashMap<>();
-        data1.put("menu", menu);
-        data1.put("numText", 3);
-        data1.put("maxNum", maxNum);
-        data1.put("chatRoom", "3번방");
+        data1.put("title", title);
+        data1.put("content", content);
         data1.put("list", Arrays.asList("list1", "list2"));
         data1.put("timestamp", FieldValue.serverTimestamp());
-        cities.document(menu).set(data1);    //document 하나가 올라갔다
+        cities.document(title).set(data1);    //document 하나가 올라갔다
     }
-    public void addDataOne(String string1, int maxNum, String chatroom) {
-        Log.d("TAG","addData_delivery 실행");
-        CollectionReference cities = db.collection("delivery_branch");
-
-        Map<String, Object> data1 = new HashMap<>();
-        data1.put("menu", string1);
-        data1.put("numText", 3);
-        data1.put("maxNum", maxNum);
-        data1.put("chatRoom", chatroom);
-        data1.put("list", Arrays.asList("list1", "list2"));
-        data1.put("timestamp", FieldValue.serverTimestamp());
-        cities.document(string1).set(data1);    //document 하나가 올라갔다
-    }
+//    public void addDataOne(String string1, int maxNum, String chatroom) {
+//        Log.d("TAG","addData_delivery 실행");
+//        CollectionReference cities = db.collection("delivery_branch");
+//
+//        Map<String, Object> data1 = new HashMap<>();
+//        data1.put("menu", string1);
+//        data1.put("numText", 3);
+//        data1.put("maxNum", maxNum);
+//        data1.put("chatRoom", chatroom);
+//        data1.put("list", Arrays.asList("list1", "list2"));
+//        data1.put("timestamp", FieldValue.serverTimestamp());
+//        cities.document(string1).set(data1);    //document 하나가 올라갔다
+//    }
 
     private void refreshScreen() {
         // 여기서 화면을 새로 고침하는 작업을 수행
