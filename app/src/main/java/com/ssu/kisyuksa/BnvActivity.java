@@ -18,6 +18,9 @@ public class BnvActivity extends AppCompatActivity {
         replaceFragment(new RoungeMainFragment());
         setContentView(binding.getRoot());
 
+        // 초기에 RoungeMainFragment 로드
+        replaceFragment(new RoungeMainFragment());
+
         binding.bnvMain.setOnNavigationItemSelectedListener(menuItem -> {
             if (menuItem.getItemId() == R.id.bnv_home) {
                 replaceFragment(new RoungeMainFragment());
