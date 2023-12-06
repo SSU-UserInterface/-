@@ -13,7 +13,7 @@ public class SleepOutListDetailActivity extends AppCompatActivity {
 
     ActivitySleepOutListDetailBinding binding;
 
-    String user_id = "TEST";
+    String user_id = SignInActivity.email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +26,12 @@ public class SleepOutListDetailActivity extends AppCompatActivity {
         binding.contents.setText(text);
         binding.title.setText(title);
 
+        binding.backBnt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         binding.fixBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

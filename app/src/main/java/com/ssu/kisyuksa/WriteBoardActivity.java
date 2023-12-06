@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
@@ -27,7 +28,7 @@ public class WriteBoardActivity extends AppCompatActivity {
     ActivityWriteBoardBinding binding;
     FirebaseFirestore db;
     Intent intent;
-    String user_id = "TEST"; //임시 변수
+    String user_id = SignInActivity.email; //임시 변수
     String type;
     String title;
     @Override
@@ -47,6 +48,13 @@ public class WriteBoardActivity extends AppCompatActivity {
         type = intent.getStringExtra("TYPE");
         binding.type.setText(type);
 
+        binding.backBnt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +69,7 @@ public class WriteBoardActivity extends AppCompatActivity {
                 else {
                     finish();
                 }
+                Toast.makeText(WriteBoardActivity.this, "게시글이 작성되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
     }
