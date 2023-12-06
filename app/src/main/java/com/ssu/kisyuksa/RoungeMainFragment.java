@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.ssu.kisyuksa.databinding.FragmentRoungeMainBinding;
 
+import java.util.Random;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link RoungeMainFragment#newInstance} factory method to
@@ -64,6 +66,31 @@ public class RoungeMainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentRoungeMainBinding binding = FragmentRoungeMainBinding.inflate(inflater, container, false);
+
+        Random random = new Random();
+        int randNum = random.nextInt(4);
+
+        if (randNum == 0) {
+            binding.imageView1.setVisibility(View.VISIBLE);
+            binding.imageView2.setVisibility(View.INVISIBLE);
+            binding.imageView3.setVisibility(View.INVISIBLE);
+            binding.imageView4.setVisibility(View.INVISIBLE);
+        } else if (randNum == 1) {
+            binding.imageView1.setVisibility(View.INVISIBLE);
+            binding.imageView2.setVisibility(View.VISIBLE);
+            binding.imageView3.setVisibility(View.INVISIBLE);
+            binding.imageView4.setVisibility(View.INVISIBLE);
+        } else if (randNum == 2) {
+            binding.imageView1.setVisibility(View.INVISIBLE);
+            binding.imageView2.setVisibility(View.INVISIBLE);
+            binding.imageView3.setVisibility(View.VISIBLE);
+            binding.imageView4.setVisibility(View.INVISIBLE);
+        } else if (randNum == 3) {
+            binding.imageView1.setVisibility(View.INVISIBLE);
+            binding.imageView2.setVisibility(View.INVISIBLE);
+            binding.imageView3.setVisibility(View.INVISIBLE);
+            binding.imageView4.setVisibility(View.VISIBLE);
+        }
 
         binding.chatButton.setOnClickListener(view -> {
             // chatButton 눌렸을 때 작동하는 함수

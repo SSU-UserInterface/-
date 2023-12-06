@@ -52,16 +52,18 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_chat"
-        android:layout_width="361dp"
-        android:layout_height="611dp"
+        android:layout_width="355dp"
+        android:layout_height="520dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="140dp"
         android:layout_weight="1"
         android:background="@drawable/chat_ground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/line1">
+        app:layout_constraintTop_toTopOf="@+id/line1"
+        app:layout_constraintVertical_bias="0.0">
 
     </androidx.recyclerview.widget.RecyclerView>
 

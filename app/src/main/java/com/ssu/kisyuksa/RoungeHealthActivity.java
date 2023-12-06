@@ -111,7 +111,7 @@ public class RoungeHealthActivity extends AppCompatActivity {
         // Create a reference for a new image
         StorageReference riversImagesRef = storageRef.child(getPath("jpg"));
 
-        File file = new File(getFilesDir(), "rivers.jpg");  //getFilesDir() 물리적인 경로가 달라져도 동적으로 찾아줌
+        File file = new File(getFilesDir(), "healthCard.jpg");  //getFilesDir() 물리적인 경로가 달라져도 동적으로 찾아줌
         Uri fileUri = Uri.fromFile(file);
 
         UploadTask uploadTask = riversImagesRef.putFile(fileUri);

@@ -41,6 +41,7 @@ public class FireStoreActivity extends AppCompatActivity {
         addData_delivery_dinner();
         addData_ott_netFlix();
         addData_ott_tving();
+        addData_chat();
         //        getADocument();   // Document관련
 
 
@@ -293,6 +294,38 @@ public class FireStoreActivity extends AppCompatActivity {
         data1.put("timestamp", FieldValue.serverTimestamp());
         ottNetFlix.document("data2").set(data1);
     }
+
+    private void addData_chat() {
+        Log.d("TAG", "addData_chat 실행");
+        CollectionReference chatMessages = db.collection("chats"); // 수정: 컬렉션 이름을 chatMessages로 변경
+
+        Map<String, Object> data1 = new HashMap<>();
+        data1.put("mName", "isaac");
+        data1.put("mMessage", "hello!");
+        data1.put("mUid", "12345g");
+        data1.put("timestamp", FieldValue.serverTimestamp()); // 수정: timestamp 추가
+        chatMessages.document("doc1").set(data1).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("TAG", "Document doc1 added successfully");
+            }
+        }); // 수정: 데이터 추가 후 성공 리스너 추가
+
+        Log.d("TAG", "addData_chat 실행");
+        Map<String, Object> data2 = new HashMap<>();
+        data2.put("mName", "yelin");
+        data2.put("mMessage", "hello!");
+        data2.put("mUid", "1004");
+        data2.put("timestamp", FieldValue.serverTimestamp()); // 수정: timestamp 추가
+
+        chatMessages.document("doc2").set(data2).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("TAG", "Document doc2 added successfully");
+            }
+        }); // 수정: 데이터 추가 후 성공 리스너 추가
+    }
+
 
     private void getADocument() {
         DocumentReference docRef = db.collection("cities").document("SF");  ///컬랙션, document, data
