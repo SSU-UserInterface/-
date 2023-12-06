@@ -308,10 +308,44 @@ public class MyPageActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                //로그인 화면으로 이동
-                                Intent intent = new Intent(MyPageActivity.this, SignInActivity.class);
-                                startActivity(intent);
-                                finish();
+
+                                FirebaseUser currentUser = mAuth.getCurrentUser();
+                                if (currentUser != null) {
+                                    // 사용자 삭제
+                                    currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                // 사용자 계정 삭제 성공
+
+                                                // Firestore에서 해당 사용자 데이터 삭제
+                                                String userId = currentUser.getUid();
+                                                db.collection("users").document(userId)
+                                                        .delete()
+                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(Task<Void> task) {
+                                                                if (task.isSuccessful()) {
+                                                                    // Firestore에서 사용자 데이터 삭제 성공
+                                                                    Toast.makeText(MyPageActivity.this, "계정과 데이터가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+
+                                                                    // 로그인 화면으로 이동
+                                                                    Intent intent = new Intent(MyPageActivity.this, SignInActivity.class);
+                                                                    startActivity(intent);
+                                                                    finish();
+                                                                } else {
+                                                                    // Firestore에서 사용자 데이터 삭제 실패
+                                                                    Toast.makeText(MyPageActivity.this, "Firestore 데이터 삭제 실패: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }
+                                                        });
+                                            } else {
+                                                // 계정 삭제 실패
+                                                Toast.makeText(MyPageActivity.this, "계정 삭제 실패: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                                }
                             }
                         })
                         .setNegativeButton("아니오", new DialogInterface.OnClickListener() {
