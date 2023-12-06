@@ -1,48 +1,55 @@
 package com.ssu.kisyuksa;
-import android.util.Log;
 
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.ServerTimestamp;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
-public class SleepApplication {
+public class Board {
+    private String type;
     private String contents;
     private String date;
-    private String start;
-    private String end;
+    private String user;
+    private String title;
+    private String writetime;
     @ServerTimestamp
     private Timestamp timestamp;
 
-    public SleepApplication() {
+    public Board() {
+        this.type = "";
+        this.title = "";
         this.contents = "";
         this.date = "";
-        this.start = "";
-        this.end = "";
+        this.user = "";
+        this.writetime = "";
     }
-    public SleepApplication(String contents, String date, String start, String end, Timestamp timestamp) {
+    public Board(String type, String title, String contents, String date, String user, String writetime) {
+        this.type = type;
+        this.title = title;
         this.contents = contents;
         this.date = date;
-        this.start = start;
-        this.end = end;
+        this.user = user;
+        this.writetime = writetime;
     }
 
+    public String getType() {
+        return type;
+    }
+    public String getTitle() {return title;}
     public String getContents() {
         return contents;
     }
     public String getDate() {
         return date;
     }
-    public String getStart() {
-        return start;
+    public String getUser() {
+        return user;
     }
-    public String getEnd() {
-        return end;
-    }
+
+    public String getWritetime() { return writetime;}
     public String getTimestamp() {
-        Date date = timestamp.toDate();
+        Date date = this.timestamp.toDate();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         int year = calendar.get(Calendar.YEAR);

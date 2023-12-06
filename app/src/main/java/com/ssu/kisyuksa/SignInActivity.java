@@ -18,6 +18,8 @@ public class SignInActivity extends AppCompatActivity {
     private ActivitySignInBinding binding; // 뷰 바인딩
     private FirebaseAuth mAuth;
 
+    public static String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         binding.btnSignin.setOnClickListener(view -> {
-            String email = binding.etSigninEmail.getText().toString();
+            email = binding.etSigninEmail.getText().toString();
             String password = binding.etSigninPw.getText().toString();
 
             // 이메일과 비밀번호를 사용하여 로그인

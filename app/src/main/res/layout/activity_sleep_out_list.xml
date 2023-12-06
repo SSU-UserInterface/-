@@ -13,6 +13,7 @@
         android:layout_margin="10dp">
 
         <ImageView
+            android:id="@+id/back_bnt"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="left"
@@ -33,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/edit_text_gray">
+        android:background="@color/white">
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

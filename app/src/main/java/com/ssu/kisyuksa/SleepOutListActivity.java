@@ -1,5 +1,6 @@
 package com.ssu.kisyuksa;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,21 +18,98 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.ssu.kisyuksa.databinding.ActivitySleepOutListBinding;
+import com.ssu.kisyuksa.databinding.ItemBoardBinding;
 
 public class SleepOutListActivity extends AppCompatActivity {
 
     private FirestorePagingAdapter<SleepApplication, SleepApplicationViewHolder> adapter;
-    String user_id = "왤케안돼";
+    String user_id = SignInActivity.email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("jj", "oncreate");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sleep_out_list);
 
+        ActivitySleepOutListBinding binding2 = ActivitySleepOutListBinding.inflate(getLayoutInflater());
+        setContentView(binding2.getRoot());
         setTitle("FirestorePagingAdapter");
+
+        binding2.backBnt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        /*setTitle("FirestorePagingAdapter");
 
         Query baseQuery = FirebaseFirestore.getInstance()
                 .collection("sleep_out_application").document(user_id).collection("sleep_out_application")
-                .orderBy("contents", Query.Direction.ASCENDING);
+                .orderBy("start", Query.Direction.DESCENDING);
+
+        PagingConfig config = new PagingConfig(*//* page size *//* 4, *//* prefetchDistance *//* 2,
+                *//* enablePlaceHolders *//* false);
+
+        FirestorePagingOptions<SleepApplication> options = new FirestorePagingOptions.Builder<SleepApplication>()
+                .setLifecycleOwner(this) // an activity or a fragment
+                .setQuery(baseQuery, config, SleepApplication.class) // (data, size, data.class)
+                .build();
+
+
+        adapter = new FirestorePagingAdapter<SleepApplication, SleepApplicationViewHolder>(options) {
+            @NonNull
+            @Override
+            public SleepApplicationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                ItemBoardBinding binding = ItemBoardBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+                return new SleepApplicationViewHolder(binding);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull SleepApplicationViewHolder holder, int position, @NonNull SleepApplication model)
+            {
+                holder.bind(model);
+            }
+        };*/
+    }
+
+    public class SleepApplicationViewHolder extends RecyclerView.ViewHolder{
+        TextView title;
+        TextView contents;
+        TextView write_date;
+        ItemBoardBinding binding;
+
+        SleepApplicationViewHolder(@NonNull ItemBoardBinding binding) {
+            super(binding.getRoot());
+            title = binding.title;
+            contents = binding.contents;
+            write_date = binding.writeDate;
+            this.binding = binding;
+        }
+
+        void bind(@NonNull SleepApplication sa) {
+            title.setText(sa.getStart()+" ~ "+sa.getEnd()+"   외박신청");
+            contents.setText(sa.getContents());
+            //write_date.setText(sa.getTimestamp());
+
+            binding.box.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(SleepOutListActivity.this, SleepOutListDetailActivity.class);
+
+                    intent.putExtra("CONTENTS", sa.getContents());
+                    intent.putExtra("TITLE", sa.getStart());
+                    startActivity(intent);
+                }
+            });
+        }
+    }
+
+    @Override
+    protected void onStart() {
+
+        Query baseQuery = FirebaseFirestore.getInstance()
+                .collection("sleep_out_application").document(user_id).collection("sleep_out_application")
+                .orderBy("start", Query.Direction.DESCENDING);
 
         PagingConfig config = new PagingConfig(/* page size */ 4, /* prefetchDistance */ 2,
                 /* enablePlaceHolders */ false);
@@ -46,48 +124,26 @@ public class SleepOutListActivity extends AppCompatActivity {
             @NonNull
             @Override
             public SleepApplicationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext())
-                        .inflate(android.R.layout.simple_list_item_2, parent, false);
-                return new SleepApplicationViewHolder(view);
+                ItemBoardBinding binding = ItemBoardBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+                return new SleepApplicationViewHolder(binding);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull SleepApplicationViewHolder holder,
-                                            int position,
-                                            @NonNull SleepApplication model) {
+            protected void onBindViewHolder(@NonNull SleepApplicationViewHolder holder, int position, @NonNull SleepApplication model)
+            {
                 holder.bind(model);
             }
         };
-
+        super.onStart();
+        adapter.startListening();
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
 
-    public class SleepApplicationViewHolder extends RecyclerView.ViewHolder{
-        TextView date;
-        TextView contents;
-
-        SleepApplicationViewHolder(@NonNull View itemView) {
-            super(itemView);
-            date = itemView.findViewById(android.R.id.text1);
-            contents = itemView.findViewById(android.R.id.text2);
-        }
-
-        void bind(@NonNull SleepApplication sa) {
-            date.setText(sa.getDate()+sa.getStartDate());
-            contents.setText(sa.getContents());
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
-
     @Override
     protected void onStop() {
+        Log.d("jj", "onstop");
         super.onStop();
         adapter.stopListening();
     }
