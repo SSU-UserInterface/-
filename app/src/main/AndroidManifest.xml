@@ -40,6 +40,9 @@
             android:name=".RoungeOttActivity"
             android:exported="false" />
         <activity
+            android:name=".RoungeOtt2Activity"
+            android:exported="false"/>
+        <activity
             android:name=".RoungeHealthActivity"
             android:exported="false" />
         <activity
