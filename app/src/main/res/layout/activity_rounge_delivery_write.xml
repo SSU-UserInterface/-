@@ -149,6 +149,48 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/temp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="112dp"
+            android:layout_marginEnd="21dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signup_pw">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/chat_room"
+                android:layout_width="100dp"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/chat_room_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/wgray"
+                    android:fontFamily="@font/pretendardregular"
+                    android:hint="3번채팅방"
+                    android:textSize="16dp"
+                    tools:ignore="DuplicateIds" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+
+                android:layout_marginBottom="16dp"
+                android:text="채팅방 이름"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/chat_room"
+                app:layout_constraintStart_toEndOf="@+id/chat_room" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/delivery_write_button"
             android:layout_width="0dp"

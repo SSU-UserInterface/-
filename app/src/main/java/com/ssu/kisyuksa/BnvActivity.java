@@ -15,6 +15,7 @@ public class BnvActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityBnvBinding.inflate(getLayoutInflater());
+        replaceFragment(new RoungeMainFragment());
         setContentView(binding.getRoot());
 
         // 초기에 RoungeMainFragment 로드
