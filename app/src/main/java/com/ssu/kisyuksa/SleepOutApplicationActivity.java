@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,11 +31,13 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
     ActivitySleepOutApplicationBinding binding;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     Intent intent;
-    String user_id = "TEST"; //임시 변수
+    String user_id = SignInActivity.email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d("jsc", user_id);
 
         binding = ActivitySleepOutApplicationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -47,6 +50,12 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
         if (intent.hasExtra("FIX") && intent.hasExtra("TITLE")) {
             binding.contents.setText(intent.getStringExtra("CONTENTS"));
         }
+        binding.backBnt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         binding.sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +73,7 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
                     finish();
                     Log.d("jsc", "finish");
                 }
+                Toast.makeText(SleepOutApplicationActivity.this, "외박신청이 완료되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
 

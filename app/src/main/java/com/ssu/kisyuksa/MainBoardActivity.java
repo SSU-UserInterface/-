@@ -37,6 +37,8 @@ public class MainBoardActivity extends AppCompatActivity {
         binding = ActivityMainBoardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
         binding.writeBoardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

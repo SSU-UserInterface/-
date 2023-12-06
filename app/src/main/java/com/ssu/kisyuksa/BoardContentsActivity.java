@@ -12,7 +12,7 @@ import com.ssu.kisyuksa.databinding.ActivityBoardContentsBinding;
 
 public class BoardContentsActivity extends AppCompatActivity {
     ActivityBoardContentsBinding binding;
-    String user_id= "TEST";
+    String user_id= SignInActivity.email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +50,13 @@ public class BoardContentsActivity extends AppCompatActivity {
                         document(type).collection(type).document(title).delete();
                 Log.d("jjsc", "delete");
                 finish();
+            }
+        });
+
+        binding.backBnt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }
