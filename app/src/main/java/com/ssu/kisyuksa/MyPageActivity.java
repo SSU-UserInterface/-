@@ -277,8 +277,10 @@ public class MyPageActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
 
-                                //로그인 화면으로 이동
-                                Intent intent = new Intent(MyPageActivity.this, SignInActivity.class);
+                                mAuth.signOut();
+
+                                //첫 화면으로 이동
+                                Intent intent = new Intent(MyPageActivity.this, FirstActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
