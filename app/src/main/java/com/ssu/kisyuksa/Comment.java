@@ -6,45 +6,28 @@ import com.google.firebase.firestore.ServerTimestamp;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Board {
-    private String type;
+public class Comment {
     private String contents;
-    private String date;
-    private String user; // email임
-    private String title;
+    private String username;
     private String writetime;
+    String wt;
     @ServerTimestamp
     private Timestamp timestamp;
 
-    public Board() {
-        this.type = "";
-        this.title = "";
+    public Comment() {
         this.contents = "";
-        this.date = "";
-        this.user = "";
         this.writetime = "";
     }
-    public Board(String type, String title, String contents, String date, String user, String writetime) {
-        this.type = type;
-        this.title = title;
+    public Comment(String contents, String username, String writetime) {
         this.contents = contents;
-        this.date = date;
-        this.user = user;
+        this.username = username;
         this.writetime = writetime;
     }
-
-    public String getType() {
-        return type;
-    }
-    public String getTitle() {return title;}
     public String getContents() {
         return contents;
     }
-    public String getDate() {
-        return date;
-    }
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
     public String getWritetime() { return writetime;}
@@ -58,3 +41,4 @@ public class Board {
         return year + "." + month + "." + day;
     }
 }
+

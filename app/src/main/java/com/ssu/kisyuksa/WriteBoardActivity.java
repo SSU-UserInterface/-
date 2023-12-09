@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,7 +36,7 @@ public class WriteBoardActivity extends AppCompatActivity {
     ActivityWriteBoardBinding binding;
     FirebaseFirestore db;
     Intent intent;
-    String user_id = SignInActivity.email; //임시 변수
+    String user_id; //임시 변수
     String type;
     String title;
     @Override
@@ -42,6 +44,13 @@ public class WriteBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityWriteBoardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //user id 얻기
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            user_id = currentUser.getEmail();
+        }
 
         intent = getIntent();
 

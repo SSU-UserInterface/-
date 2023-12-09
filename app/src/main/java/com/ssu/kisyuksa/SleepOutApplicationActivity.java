@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -31,13 +33,11 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
     ActivitySleepOutApplicationBinding binding;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     Intent intent;
-    String user_id = SignInActivity.email;
+    String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Log.d("jsc", user_id);
 
         binding = ActivitySleepOutApplicationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -45,6 +45,15 @@ public class SleepOutApplicationActivity extends AppCompatActivity {
         initializeCloudFirestore();
 
         intent = getIntent();
+
+        // FirebaseAuth 인스턴스 가져오기
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            user_id = currentUser.getEmail();
+            // 필요한 사용자 정보를 사용
+        }
+        Log.d("jscjj", user_id);
 
         // fix탭으로 로 열었을 때
         if (intent.hasExtra("FIX") && intent.hasExtra("TITLE")) {

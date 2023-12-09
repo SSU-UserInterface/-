@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.ssu.kisyuksa.databinding.ActivityMainBoardBinding;
@@ -25,12 +27,19 @@ import com.ssu.kisyuksa.databinding.ItemBoardBinding;
 public class MainBoardActivity extends AppCompatActivity {
     ActivityMainBoardBinding binding;
     private FirestorePagingAdapter<Board, MainBoardActivity.BoardViewHolder> adapter;
-    String user_id = "TEST";
+    String user_id;
     String type; // 수리, 분실물, 룸메이트
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //user id 얻기
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            user_id = currentUser.getEmail();
+        }
 
         type = "수리";
 
@@ -123,7 +132,6 @@ public class MainBoardActivity extends AppCompatActivity {
 
     }
     private void viewBoard(){
-        Log.d("jjsc", type);
         Query baseQuery = FirebaseFirestore.getInstance()
                 .collection("board").document(type).collection(type)
                 .orderBy("writetime", Query.Direction.DESCENDING);
