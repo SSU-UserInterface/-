@@ -24,19 +24,7 @@ import com.google.firebase.firestore.Query;
 import com.ssu.kisyuksa.databinding.FragmentMainBoardBinding;
 import com.ssu.kisyuksa.databinding.FragmentNoticeAndSleepoverBinding;
 import com.ssu.kisyuksa.databinding.ItemBoardBinding;
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MainBoardFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MainBoardFragment extends Fragment {
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
 
     FragmentMainBoardBinding binding;
 
@@ -44,23 +32,10 @@ public class MainBoardFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static MainBoardFragment newInstance(String param1, String param2) {
-        MainBoardFragment fragment = new MainBoardFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.d("jsc", "oncreate");
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override

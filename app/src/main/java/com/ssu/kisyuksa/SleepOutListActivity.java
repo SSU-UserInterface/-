@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.ssu.kisyuksa.databinding.ActivitySleepOutListBinding;
@@ -24,11 +26,18 @@ import com.ssu.kisyuksa.databinding.ItemBoardBinding;
 public class SleepOutListActivity extends AppCompatActivity {
 
     private FirestorePagingAdapter<SleepApplication, SleepApplicationViewHolder> adapter;
-    String user_id = SignInActivity.email;
+    String user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("jj", "oncreate");
         super.onCreate(savedInstanceState);
+
+        //user id 얻기
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            user_id = currentUser.getEmail();
+        }
 
         ActivitySleepOutListBinding binding2 = ActivitySleepOutListBinding.inflate(getLayoutInflater());
         setContentView(binding2.getRoot());

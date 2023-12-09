@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.ssu.kisyuksa.databinding.ActivitySleepOutListDetailBinding;
 
@@ -13,12 +15,19 @@ public class SleepOutListDetailActivity extends AppCompatActivity {
 
     ActivitySleepOutListDetailBinding binding;
 
-    String user_id = SignInActivity.email;
+    String user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySleepOutListDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //user id 얻기
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            user_id = currentUser.getEmail();
+        }
 
         Intent intent = getIntent();
         String text = intent.getStringExtra("CONTENTS");
