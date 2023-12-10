@@ -18,7 +18,8 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="30dp">
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/chat_back_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="left"

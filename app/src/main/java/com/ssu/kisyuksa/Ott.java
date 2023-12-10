@@ -17,6 +17,7 @@ public class Ott {
     private List<String> list;
     @ServerTimestamp private Timestamp timestamp; // server timestamp
 
+    public Ott() {}
 
     public Ott(String title, String content, int partyNum, int currentNum, List<String> list) {
         this.title = title;

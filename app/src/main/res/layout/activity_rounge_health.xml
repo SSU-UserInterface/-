@@ -101,6 +101,7 @@
             tools:ignore="MissingConstraints">
 
             <TextView
+                android:id="@+id/health_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
@@ -120,6 +121,7 @@
                 tools:layout_editor_absoluteY="286dp" />
 
             <TextView
+                android:id="@+id/health_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
@@ -139,6 +141,7 @@
                 tools:layout_editor_absoluteY="286dp" />
 
             <TextView
+                android:id="@+id/health_room_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
@@ -157,13 +160,13 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteY="286dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="5dp"
-                android:text="기간: 2023.09.01 ~ 2023.12.23"
-                tools:layout_editor_absoluteX="40dp"
-                tools:layout_editor_absoluteY="255dp" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingBottom="5dp"-->
+<!--                android:text="기간: 2023.09.01 ~ 2023.12.23"-->
+<!--                tools:layout_editor_absoluteX="40dp"-->
+<!--                tools:layout_editor_absoluteY="255dp" />-->
 
             <ImageView
                 android:layout_width="300dp"
