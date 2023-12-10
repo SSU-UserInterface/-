@@ -24,7 +24,8 @@ public class RoungeOttWriteActivity extends AppCompatActivity {
             String ottText = binding.contentWriteOtt.getText().toString();
 
             Intent intent = getIntent();
-            intent.putExtra("ottText", ottText);
+            intent.putExtra("title", "사람 구함");
+            intent.putExtra("content", ottText);
             setResult(RESULT_OK,intent);
             finish();
         });

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.ssu.kisyuksa.databinding.ActivityRoungeChatBinding;
 import com.ssu.kisyuksa.databinding.ActivityRoungeChatroomBinding;
@@ -23,6 +24,12 @@ public class RoungeChatActivity extends AppCompatActivity {
 //            Intent intent = new Intent(this, ActivityRoungeChatroomBinding.class);
 //            startActivity(intent);
 //        });
+        binding.chatBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         binding.chatButton1.setOnClickListener(view -> {
             //

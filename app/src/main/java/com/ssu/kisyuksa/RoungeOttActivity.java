@@ -27,11 +27,11 @@ public class RoungeOttActivity extends AppCompatActivity {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
-                        Intent intent = result.getData();
+//                        Intent intent = result.getData();
 //                        FireStoreActivity fireStoreActivity = new FireStoreActivity();
 //                        addDataOne(intent.getStringExtra("menu"),intent.getStringExtra("num"));
 //                        refreshScreen();
-                        Log.d("TAG", intent.getStringExtra("ottText"));
+//                        Log.d("TAG", intent.getStringExtra("ottText"));
                     }
                 }
         );

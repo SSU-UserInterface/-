@@ -4,22 +4,20 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ChatHolder extends RecyclerView.ViewHolder {
+public class ChatingViewHolder extends RecyclerView.ViewHolder {
     TextView mTextView;
     TextView mValueView;
 
-
-    ChatHolder(@NonNull View itemView) {
+    ChatingViewHolder(@NonNull View itemView) {
         super(itemView);
         mTextView = itemView.findViewById(android.R.id.text1);
         mValueView = itemView.findViewById(android.R.id.text2);
     }
 
-    void bind(@NonNull Chat chat) {
-        mTextView.setText(chat.getName());
-        mValueView.setText(chat.getMessage());
+    void bind(@NonNull Chating chating) {
+        mTextView.setText(chating.getName());
+        mValueView.setText(chating.getMessage());
     }
 }

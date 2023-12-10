@@ -29,6 +29,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -42,11 +47,53 @@ import java.io.InputStream;
 public class RoungeHealthActivity extends AppCompatActivity {
     String TAG = "TAG";
     ActivityRoungeHealthBinding binding;
+    FirebaseAuth mAuth;
+    FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("TAG","실행중....");
         super.onCreate(savedInstanceState);
         binding = ActivityRoungeHealthBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.healthName.setText("isaac");
+
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        Log.d("TAG", "헬스정보 받아오기2");
+        Toast.makeText(this, "토스트 확인", Toast.LENGTH_SHORT).show();
+
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+
+            // Firestore에서 해당 사용자 정보 가져오기
+            DocumentReference userRef = db.collection("users").document(userId);
+            userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            String name = document.getString("name");
+                            String nickname = document.getString("nickname");
+                            String stId = document.getString("stId");
+                            String room = document.getString("room");
+
+                            // 가져온 정보를 화면에 반영
+                            binding.healthName.setText(name);
+                            binding.healthNumber.setText(stId);
+                            binding.healthRoomNum.setText(room);
+                        }
+                    } else {
+                        // 사용자 정보 가져오기 실패 시 처리
+                        Toast.makeText(RoungeHealthActivity.this, "사용자 정보 가져오기 실패", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
 
         binding.backButtonH.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +109,7 @@ public class RoungeHealthActivity extends AppCompatActivity {
                 showAlertDialog(RoungeHealthActivity.this, "파일 업로드하기", "내용을 입력하세요");
             }
         });
+
     }
 
     private void showAlertDialog(Context context, String title, String message) {
@@ -134,41 +182,6 @@ public class RoungeHealthActivity extends AppCompatActivity {
         });
     }
 
-//    private void uploadFromStream() {
-//        // Get a default Storage bucket
-//        FirebaseStorage storage = FirebaseStorage.getInstance();
-//
-//        // Points to the root reference
-//        StorageReference storageRef = storage.getReference();
-//
-//        // Create a reference for a new image
-//        StorageReference riversImagesRef = storageRef.child(getPath("jpg"));
-//
-//        try {
-//            File file = new File(getFilesDir(), "rivers.jpg");
-//            InputStream stream = new FileInputStream(file);
-//
-//            UploadTask uploadTask = riversImagesRef.putStream(stream);  //스토리지만 주면 알아서~
-//            uploadTask.addOnFailureListener(new OnFailureListener() {
-//                @Override
-//                public void onFailure(@NonNull Exception exception) {
-//                    // Handle unsuccessful uploads
-//                    Log.d(TAG, "스트림으로 빼온 이미지 데이터 업로드 실패");
-//                }
-//            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-//                    // ...
-//                    Log.d(TAG, "스트림으로 빼온 이미지 데이터 업로드 성공");
-////                    launchDownloadActivity(taskSnapshot.getMetadata().getReference().toString());
-//                    downloadImageTo(taskSnapshot.getMetadata().getReference().toString());
-//                }
-//            });
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     private String getPath(String extension) {
         String uid = getUidOfCurrentUser();

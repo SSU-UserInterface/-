@@ -1,9 +1,14 @@
 package com.ssu.kisyuksa;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,30 +18,107 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.ssu.kisyuksa.DeliveryMenu;
-import com.ssu.kisyuksa.DeliveryMenuViewHolder;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.ssu.kisyuksa.Chating;
+import com.ssu.kisyuksa.ChatingViewHolder;
 import com.ssu.kisyuksa.R;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RoungeChatRoomActivity extends AppCompatActivity {
 
-    private FirestorePagingAdapter<DeliveryMenu, DeliveryMenuViewHolder> adapter;
+    private FirestorePagingAdapter<Chating, ChatingViewHolder> adapter;
 
+    FirebaseAuth mAuth;
+    FirebaseFirestore db;
+    String currentUserUid; // 추가된 부분
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rounge_chatroom);
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser != null) {
+            currentUserUid = currentUser.getUid();
+        } else {
+            // Handle the case where the user is not authenticated
+            // You might want to redirect the user to the login screen or take appropriate action
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show();
+            finish(); // Close the activity if the user is not authenticated
+            return;
+        }
+
+        ImageButton backButton = findViewById(R.id.chat_room_back_btn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         setTitle("FirestorePagingAdapter");
 
         // The "base query" is a query with no startAt/endAt/limit clauses that the adapter can use
         // to form smaller queries for each page. It should only include where() and orderBy() clauses
-        Query baseQuery = FirebaseFirestore.getInstance()
-                // 파이어베이스 접근
-                .collection("delivery_branch")
-                // 양이 어마어마할 수 있다.
-                .orderBy("menu", Query.Direction.ASCENDING);
+        // Firestore에서 데이터 가져오는 부분
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
+        Query baseQuery = db.collection("chating")
+                .orderBy("timestamp", Query.Direction.ASCENDING);
+
+        TextView chat_message = findViewById(R.id.chat_write);
+        Button sendButton = findViewById(R.id.sendButton);
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Fetch the nickname from Firestore using the user's UID
+                DocumentReference userRef = db.collection("users").document(currentUserUid);
+                userRef.get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            String nickname = document.getString("nickname");
+                            String mMessage = chat_message.getText().toString();
+                            addDataOne(nickname, mMessage);
+                            chat_message.setText(" ");
+                            recreate();
+                        } else {
+                            Log.d("TAG", "No such document");
+                        }
+                    } else {
+                        Log.d("TAG", "get failed with ", task.getException());
+                    }
+                });
+            }
+        });
+
+
+        // baseQuery로 데이터 가져오기
+        baseQuery.get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            Log.d("TAG", document.getId() + " => " + document.getData());
+                        }
+                    } else {
+                        Log.d("TAG", "Error getting documents: ", task.getException());
+                    }
+                });
+
+
         //orderBy는 정렬해주는 것, query는 내가 질문한 것에 대한 대답
 
         // This configuration comes from the Paging 3 Library
@@ -50,28 +132,28 @@ public class RoungeChatRoomActivity extends AppCompatActivity {
         // The options for the adapter combine the paging configuration with query information
         // and application-specific options for lifecycle, etc.
         /// options에 쿼리가 들어가 있음!
-        FirestorePagingOptions<DeliveryMenu> options = new FirestorePagingOptions.Builder<DeliveryMenu>()
+        FirestorePagingOptions<Chating> options = new FirestorePagingOptions.Builder<Chating>()
                 /// 요 객체를 만들어야 해서 , adapter를 만들 때 넣어줘야하는 객체
                 .setLifecycleOwner(this) // an activity or a fragment
-                .setQuery(baseQuery, config, DeliveryMenu.class)
+                .setQuery(baseQuery, config, Chating.class)
                 .build();
         /// 어댑터가 파이어베이스와 지속적으로 연결되어 있다. 최초 쿼리가 날라간 이후에 추가되는 데이터도 adapter에 적용이되서 화면에 나온다.
-        adapter = new FirestorePagingAdapter<DeliveryMenu, DeliveryMenuViewHolder>(options) {
+        adapter = new FirestorePagingAdapter<Chating, ChatingViewHolder>(options) {
             @NonNull
             @Override
-            public DeliveryMenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public ChatingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 // Create the ItemViewHolder
                 // ...
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(android.R.layout.simple_list_item_2, parent, false);
-                return new DeliveryMenuViewHolder(view);
+                return new ChatingViewHolder(view);
             }
 
-            /// 똑같은 형태 모델은 DeliveryMenu 타입
+            /// 똑같은 형태 모델은 Chating 타입
             @Override
-            protected void onBindViewHolder(@NonNull DeliveryMenuViewHolder holder,
+            protected void onBindViewHolder(@NonNull ChatingViewHolder holder,
                                             int position,
-                                            @NonNull DeliveryMenu model) {
+                                            @NonNull Chating model) {
                 // Bind the item to the view holder
                 // ...
                 holder.bind(model);
@@ -94,4 +176,18 @@ public class RoungeChatRoomActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+
+    public void addDataOne(String name, String message) {
+
+        CollectionReference cities = db.collection("chating");
+
+        Map<String, Object> data1 = new HashMap<>();
+        data1.put("name", name);
+        data1.put("message", message);
+        data1.put("timestamp", FieldValue.serverTimestamp());
+
+        cities.document().set(data1);    //document 하나가 올라갔다
+    }
+
+
 }
