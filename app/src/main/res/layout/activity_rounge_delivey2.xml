@@ -90,7 +90,7 @@
         tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="362dp"
+        android:layout_width="match_parent"
         android:layout_height="568dp"
         android:layout_marginTop="6dp"
         android:clickable="false"

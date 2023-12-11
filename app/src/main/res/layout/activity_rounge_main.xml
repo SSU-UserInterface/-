@@ -30,7 +30,7 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="401dp"
+        android:layout_width="match_parent"
         android:layout_height="552dp"
         app:layout_constraintBottom_toTopOf="@+id/bnv_main"
         app:layout_constraintTop_toBottomOf="@+id/ll_signup_l1"
@@ -40,7 +40,7 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="401dp"
+        android:layout_width="match_parent"
         android:layout_height="552dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/bnv_main"
@@ -51,7 +51,7 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="401dp"
+        android:layout_width="match_parent"
         android:layout_height="552dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/bnv_main"
@@ -63,7 +63,7 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="401dp"
+        android:layout_width="match_parent"
         android:layout_height="552dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/bnv_main"
@@ -88,10 +88,10 @@
         android:id="@+id/delivery_button"
         android:layout_width="74dp"
         android:layout_height="38dp"
-        android:layout_gravity="left"
+        android:layout_marginEnd="100dp"
         android:src="@drawable/rounge_delivery_button"
+        app:layout_constraintEnd_toEndOf="@+id/imageView1"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="261dp"
         tools:layout_editor_absoluteY="291dp" />
 
     <ImageView
