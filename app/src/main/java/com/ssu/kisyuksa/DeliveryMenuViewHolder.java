@@ -17,7 +17,7 @@ public class DeliveryMenuViewHolder extends RecyclerView.ViewHolder {
     }
 
     void bind(@NonNull DeliveryMenu deliveryMenu) {
-        String message = deliveryMenu.getNumText() + " / " + deliveryMenu.getMaxNum() ;
+        String message = 1 + " / " + deliveryMenu.getMaxNum() ;
         mTextView.setText(deliveryMenu.getMenu());
         mValueView.setText(message);
     }

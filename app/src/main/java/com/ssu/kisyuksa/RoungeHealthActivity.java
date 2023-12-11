@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -49,6 +50,8 @@ public class RoungeHealthActivity extends AppCompatActivity {
     ActivityRoungeHealthBinding binding;
     FirebaseAuth mAuth;
     FirebaseFirestore db;
+
+    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,12 +108,14 @@ public class RoungeHealthActivity extends AppCompatActivity {
         binding.uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("TAG","등록증 클릭");
-                showAlertDialog(RoungeHealthActivity.this, "파일 업로드하기", "내용을 입력하세요");
+                Log.d("TAG", "등록증 클릭");
+                binding.uploadButton.setVisibility(View.INVISIBLE);
+                selectImage();
             }
         });
 
     }
+
 
     private void showAlertDialog(Context context, String title, String message) {
         // AlertDialog.Builder를 사용하여 다이얼로그 생성
@@ -194,37 +199,6 @@ public class RoungeHealthActivity extends AppCompatActivity {
         return dir + "/" + fileName;
     }
 
-//    private void launchDownloadActivity(String referenceForDownload) {
-////        Intent intent = new Intent(this, RoungeHealthActivity.class);   // 임시 수정
-////        intent.putExtra("DOWNLOAD_REF", referenceForDownload);
-////        startActivity(intent);
-//        downloadImageTo(referenceForDownload);
-//    }
-
-    private void signIn() {
-        // Initialize Firebase Auth
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-        String email = "user1@abc.com";
-        String password = "123456";
-
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
     private void signOut() {
         FirebaseAuth.getInstance().signOut();
     }
@@ -264,6 +238,25 @@ public class RoungeHealthActivity extends AppCompatActivity {
                 .into(imageView);
 
         Log.d(TAG,"글라이드 함수 실행 후");
+    }
+
+    private void selectImage() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri selectedImageUri = data.getData();
+            // 여기에서 선택한 이미지를 처리하고 업로드하는 로직을 추가하면 됩니다.
+            // selectedImageUri를 사용하여 이미지를 업로드하는 코드를 호출하도록 수정하세요.
+            // 예를 들어, uploadImage(selectedImageUri)와 같은 메서드를 호출할 수 있습니다.
+            uploadFromFile();
+        }
     }
 
 }
